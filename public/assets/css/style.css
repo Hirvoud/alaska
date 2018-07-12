@@ -1,0 +1,33 @@
+body {
+    font-family: Roboto, arial, sans-serif;
+}
+
+h1, h3 {
+    text-align: center;
+}
+
+h3 {
+    background-color:#F09D9D;
+    color:black;
+    font-size:1em;
+    width: 70%;
+    margin-bottom:0px;
+    margin: auto;
+}
+
+.post p {
+    background-color:#CCCCCC;
+    margin-top:0px;
+}
+
+.post {
+    width:70%;
+    margin: auto;
+}
+
+a
+{
+    text-decoration: none;
+    color: blue;
+    font-style: italic;
+}
