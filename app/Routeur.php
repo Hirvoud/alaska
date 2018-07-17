@@ -23,7 +23,7 @@ class Routeur {
             $controller = $this->routes[$action]["controller"];
             $currentCont = new $controller();
             $method = $this->routes[$action]["method"];
-        $currentCont->$method(/*$this->getParams*/);
+            $currentCont->$method(/*$this->getParams*/);
            
         }
         else {

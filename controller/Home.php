@@ -12,16 +12,17 @@ class Home {
 
     public function getPosts() {
         $list = $this->postMngr->listPosts();
-        //new View(chemin vers la vue (front/back))
-        //myView->render($list)
-        $this->render($list);
+
+        $myView = new View("home");
+        $myView->render($list);
+
     }
 
-    public function render($list) { //render Sandy
+    /*public function render($list) { 
         $this->list = $list;
-        require VIEW."/acc.php";
+        require VIEW."home.php";
 
-    }
+    }*/
 
     public function addPost() {
         $p = $this->postMngr->addPost($_POST["author"], $_POST["title"], $_POST["content"]);
