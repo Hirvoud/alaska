@@ -7,6 +7,7 @@ class Post {
     private $_date;
     private $_id;
     private $_title;
+    private $error = [];
 
     public function __construct() {
 
@@ -47,6 +48,8 @@ class Post {
         $id = (int)$id;
         if ($id > 0) {
             $this->_id = $id;
+        } else {
+            $error["_id"] = "id incorrect";
         }
 
     }

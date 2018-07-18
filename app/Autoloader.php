@@ -17,7 +17,9 @@ class MyAutoload {
 
 		define("CONTROLLER", ROOT."controller/");
 		define("MODEL", ROOT."model/");
-		define("VIEW", ROOT."views/front/");
+		define("VIEW", ROOT."views/");
+		define("FRONT", ROOT."views/front/");
+		define("BACK", ROOT."views/back/");
         define("APP", ROOT."app/");
         define("MNGR", MODEL."Mngr/");
 

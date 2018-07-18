@@ -18,17 +18,37 @@ class Home {
 
     }
 
-    /*public function render($list) { 
-        $this->list = $list;
-        require VIEW."home.php";
-
-    }*/
-
-    public function addPost() {
-        $p = $this->postMngr->addPost($_POST["author"], $_POST["title"], $_POST["content"]);
-        
+    public function addP() {
+        $myView = new View("addPost");
+        $myView->render();
     }
 
+    public function addPost() {
+        //test session
+        //new Post
+        //test tableau erreur !empty −> afficher erreur
+        $p = $this->postMngr->addPost($_POST["author"], $_POST["title"], $_POST["content"]);
+        header("Location: ../public/index.php");
+    }
+
+    public function affP($id) {
+        $chap = $this->postMngr->vPost($id);
+        $myView = new View("chap");
+        $myView->render($chap);
+    }
+
+    public function modP($id) {
+        $chap = $this->postMngr->vPost($id);
+        $myView = new View("modP");
+        $myView->render($chap);
+    }
+
+    public function editP($id) {
+        //$this->postMngr->upPost($_GET["p"]);
+        $this->postMngr->upPost($id);
+        
+        header("Location: ../public/index.php");
+    }
 }
 
 

@@ -3,9 +3,15 @@
 class Routeur {
 
     private $action;
+    private $param;
     private $routes =   [
-                            "home"=>["controller" => "Home", "method" => "getPosts"],
-                            "add" =>["controller" => "Home", "method" => "addPost"]
+                            "home"  =>["controller" => "Home", "method" => "getPosts"], //afficher les posts
+                            "add"   =>["controller" => "Home", "method" => "addPost"], //ajouter un post
+                            "addP"  =>["controller" => "Home", "method" => "addP"], //ouvrir la page d'ajout
+                            "aff"   =>["controller" => "Home", "method" => "affP"], //afficher un post
+                            "mod"   =>["controller" => "Home", "method" => "modP"], //ouvrir la page de modification
+                            "modP"   =>["controller" => "Home", "method" => "editP"] //modifier un post
+
                         ];
     
     public function __construct($action) {
@@ -14,7 +20,16 @@ class Routeur {
     
     }
 
-    //public function getParams(GET ou POST) routeur Sandy
+    public function getParams() {
+        
+        if (!empty($_GET) && isset($_GET["p"])) {
+            $param = $_GET["p"];
+        }
+        if (!isset($param)) {
+            $param = null;
+        }
+            return $param;
+    }
 
     public function renderCont() {
         
@@ -23,7 +38,7 @@ class Routeur {
             $controller = $this->routes[$action]["controller"];
             $currentCont = new $controller();
             $method = $this->routes[$action]["method"];
-            $currentCont->$method(/*$this->getParams*/);
+            $currentCont->$method($this->getParams());
            
         }
         else {

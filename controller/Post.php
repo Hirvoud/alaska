@@ -6,6 +6,7 @@ class Post {
     private $commMngr;
     private $postMngr;
 
+
     public function __construct() {
 
         $this->commMngr = new CommMngr();

@@ -16,18 +16,12 @@ class PostMngr extends Mngr {
     public function delPost($id) {
         
         $db = $this->dbConnect();
-        $db->query("DELETE * FROM posts WHERE id=$id");
-        $db->query("DELETE * FROM comms WHERE postId=$id");
         
-        /*$db->prepare()
+        $db->prepare("DELETE * FROM posts WHERE id=$id");
+        $db->execute();
+        $db->prepare("DELETE * FROM comms WHERE postId=$id");
         $db->execute();
 
-        /*
-        $db = "DELETE * FROM posts WHERE id=$id";
-        $del = execute($db);
-        $db = "DELETE * FROM comms WHERE postId=$id";
-        $del = execute($db);
-        */
     }
 
     public function listPosts() {
@@ -35,6 +29,7 @@ class PostMngr extends Mngr {
         $db = $this->dbConnect();
         $req = $db->query("SELECT id, author, title, content, DATE_FORMAT(deiz, '%d/%m/%Y à %Hh%imin%ss') AS deiz_f FROM posts ORDER BY deiz DESC LIMIT 0, 5");
         $res = $req->fetchAll();
+        //pour chaque $res on crée un objet Post et on hydrate
         return $res;
 
     }
@@ -50,4 +45,16 @@ class PostMngr extends Mngr {
 
     }
 
+    public function upPost($id) {
+
+        $db = $this->dbConnect();
+        $maj = $db->prepare("UPDATE posts SET title = :title, content = :content WHERE id = :id");
+        $maj->bindValue(":id", $id);
+        $maj->bindValue(":title", $_POST["title"]);
+        $maj->bindValue(":content", $_POST["content"]);
+        $maj->execute();
+        /*var_dump($maj->errorInfo());
+        die;*/
+
+    }
 }

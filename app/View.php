@@ -10,14 +10,14 @@ class View {
 
     }
 
-    public function render($param) {
+    public function render($param = null) {
 
         $vue = $this->vue;
 
         ob_start();
-        include(VIEW.$vue.".php");
+        include(BACK.$vue.".php");
         $content = ob_get_clean();
-        include_once (VIEW."default.php");
+        include_once (BACK."default.php");
 
     }
 
