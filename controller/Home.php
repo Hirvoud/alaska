@@ -43,8 +43,9 @@ class Home {
 
     public function affP($id) {
         $chap = $this->postMngr->vPost($id);
+        $comm = $this->commMngr->vComms($id);
         $myView = new View("chap");
-        $myView->render($chap);
+        $myView->render($chap, $comm);
     }
 
     public function modP($id) {
@@ -54,11 +55,22 @@ class Home {
     }
 
     public function editP($id) {
-        //$this->postMngr->upPost($_GET["p"]);
         $this->postMngr->upPost($id);
-        
         header("Location: ../public/index.php");
     }
+
+    public function addC($id) {
+        $myView = new View("addComm");
+        $myView->render();
+    }
+
+    public function addCom($id) {
+        $this->commMngr->addComm($_POST["author"], $_POST["comment"], $id);
+        $this->affP($id);
+        
+        //header("Location: ../public/index.php?a=aff&p=$id");
+    }
+
 }
 
 

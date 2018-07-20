@@ -10,7 +10,9 @@ class Routeur {
                             "addP"  =>["controller" => "Home", "method" => "addP"], //ouvrir la page d'ajout
                             "aff"   =>["controller" => "Home", "method" => "affP"], //afficher un post
                             "mod"   =>["controller" => "Home", "method" => "modP"], //ouvrir la page de modification
-                            "modP"   =>["controller" => "Home", "method" => "editP"] //modifier un post
+                            "modP"   =>["controller" => "Home", "method" => "editP"], //modifier un post
+                            "com"   =>["controller" => "Home", "method" => "addC"], //ouvrir la page d'ajout de commentaire
+                            "addC"   =>["controller" => "Home", "method" => "addCom"] //ajouter un commentaire
 
                         ];
     
@@ -28,7 +30,8 @@ class Routeur {
         if (!isset($param)) {
             $param = null;
         }
-            return $param;
+        return $param;
+        
     }
 
     public function renderCont() {

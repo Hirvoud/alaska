@@ -10,7 +10,7 @@ class View {
 
     }
 
-    public function render($param = null) {
+    public function render($param = null, $p2 = null) {
 
         $vue = $this->vue;
 

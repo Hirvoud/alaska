@@ -13,5 +13,10 @@
     </div>
     <p><a href="index.php?a=mod&p=<?= $param["id"];?>">Modifier ce chapitre</a></p><br />
     <h2>Commentaires</h2>
-    <p><a href="index.php?a=comm">Ajouter un commentaire</a></p>
+    <p><a href="index.php?a=com&p=<?= $_GET["p"]; ?>">Ajouter un commentaire</a></p>
+    <?php
+        foreach ($p2 as $comm) {
+            echo    "<p><span class='auteur'>" . $comm["author"] . "</span>, le <em>".$comm["deiz_cf"]."</em></p><p>". mb_strimwidth($comm["comment"], 0, 410)."</p>";
+        }
+    ?>
 </div>

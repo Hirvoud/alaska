@@ -9,7 +9,7 @@ h1, h3 {
 h3 {
     background-color:#F09D9D;
     color:black;
-    font-size:1em;
+    font-size:1.2em;
     width: 70%;
     margin-bottom:0px;
     margin: auto;
@@ -30,4 +30,9 @@ a
     text-decoration: none;
     color: blue;
     font-style: italic;
+}
+
+.auteur {
+    font-size:1.1em;
+    font-weight: 500;
 }
