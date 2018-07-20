@@ -6,7 +6,7 @@
         <p>
             <?php
             foreach ($param as $chap) {
-                echo    "<p>" . $chap["title"] . " par " . $chap["author"] . " – <a href='index.php?a=aff&p=".$chap["id"]."'>Afficher</a></p><p>". mb_strimwidth($chap["content"], 0, 410)."…</p>";
+                echo    "<h3>" . $chap["title"] . " par " . $chap["author"] . " – <a href='index.php?a=aff&p=".$chap["id"]."'>Afficher</a></h3><p>". mb_strimwidth($chap["content"], 0, 410)."…</p>";
             }
             ?>
         </p>

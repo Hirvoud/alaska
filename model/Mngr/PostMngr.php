@@ -10,7 +10,6 @@ class PostMngr extends Mngr {
         $db = $this->dbConnect();
         $ins = $db->prepare("INSERT INTO posts(author, title, content, deiz) VALUES(?, ?, ?, NOW())");
         $ins->execute(array($author, $title, $content));
-        
     }
     
     public function delPost($id) {

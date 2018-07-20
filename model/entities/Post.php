@@ -7,10 +7,18 @@ class Post {
     private $_date;
     private $_id;
     private $_title;
-    private $error = [];
+    public $error = [];
 
     public function __construct() {
 
+    }
+
+    public function hydrate($author, $title, $content) {
+    
+        $this->setAuthor($author);
+        $this->setTitle($title);
+        $this->setContent($content);
+        
     }
 
     public function getAuthor() {
@@ -49,7 +57,7 @@ class Post {
         if ($id > 0) {
             $this->_id = $id;
         } else {
-            $error["_id"] = "id incorrect";
+            $error["id"] = "id incorrect";
         }
 
     }

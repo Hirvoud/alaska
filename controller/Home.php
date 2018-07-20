@@ -25,10 +25,20 @@ class Home {
 
     public function addPost() {
         //test session
-        //new Post
-        //test tableau erreur !empty −> afficher erreur
-        $p = $this->postMngr->addPost($_POST["author"], $_POST["title"], $_POST["content"]);
+        
+        //$p = $this->postMngr->addPost($_POST["author"], $_POST["title"], $_POST["content"]);
+
+        $post = new Post();
+        $post->hydrate($_POST["author"], $_POST["title"], $_POST["content"]);
+        
+        if (!empty($post->error)) {
+            echo $post->error["id"]; //à travailler !
+        } else {
+        $this->postMngr->addPost($post->getAuthor(), $post->getTitle(), $post->getContent());
+        
         header("Location: ../public/index.php");
+        }
+
     }
 
     public function affP($id) {

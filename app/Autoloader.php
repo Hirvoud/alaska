@@ -21,7 +21,8 @@ class MyAutoload {
 		define("FRONT", ROOT."views/front/");
 		define("BACK", ROOT."views/back/");
         define("APP", ROOT."app/");
-        define("MNGR", MODEL."Mngr/");
+		define("MNGR", MODEL."Mngr/");
+		define("ENT", MODEL."Entities/");
 
 		define("ASSETS", HOST."assets/");
 	}
@@ -44,6 +45,8 @@ class MyAutoload {
             
             include_once(MNGR.$class.".php");
 
-        }
+        } elseif (file_exists(ENT.$class.".php")) {
+			include_once(ENT.$class.".php");
+		}
     }
 }
