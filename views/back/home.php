@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION["pseudo"]) || $_SESSION["pseudo"] !== "Jean Forteroche" ) { 
+    header("Location: ../views/front/denied.php");
+}
+
 ?>
 <div class="page">
     <h1>Billet simple pour l'Alaska</h1>
@@ -14,5 +18,5 @@ session_start();
             ?>
         </p>
     </div>
-    <p><a href="index.php">Déconnexion</a>
+    <p><a href="index.php?a=deco">Déconnexion</a>
 </div>

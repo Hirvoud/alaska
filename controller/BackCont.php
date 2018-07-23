@@ -19,6 +19,13 @@ class BackCont {
         $this->userMngr->check($pseudo, $password);
     }
     
+    public function deco() {
+        session_start();
+        $_SESSION = array();
+        session_destroy();
+        header("Location: index.php");
+    }
+
     public function getPosts() {
         $list = $this->postMngr->listPosts();
 
@@ -42,9 +49,8 @@ class BackCont {
         if (!empty($post->error)) {
             echo $post->error["id"]; //à travailler !
         } else {
-        $this->postMngr->addPost($post->getAuthor(), $post->getTitle(), $post->getContent());
-        
-        header("Location: ../public/index.php");
+            $this->postMngr->addPost($post->getAuthor(), $post->getTitle(), $post->getContent());
+            header("Location: ../public/index.php");
         }
 
     }
@@ -56,38 +62,26 @@ class BackCont {
         $myView->renderB($chap, $comm);
     }
 
-    public function modP($id) {
-        $chap = $this->postMngr->vPost($id);
-        $myView = new View("modP");
-        $myView->renderB($chap);
-    }
-
     public function editP($id) {
-        $this->postMngr->upPost($id);
-        header("Location: ../public/index.php?a=aff&p=$id");
-    }
-
-    /*public function modP($id) {
-        if ($_GET["a"] == "mod"){
+        if (!isset($_GET["e"])) {
             $chap = $this->postMngr->vPost($id);
-            $myView = new View("modP");
+            $myView = new View("editP");
             $myView->renderB($chap);
         } else {
             $this->postMngr->upPost($id);
-            header("Location: ../public/index.php?a=aff&p=$id>");
+            header("Location: ../public/index.php?a=aff&p=$id");
         }
-    }*/
-    
-    public function addC($id) {
-        $myView = new View("addComm");
-        $myView->renderB();
     }
-
+    
     public function addCom($id) {
-        $this->commMngr->addComm($_POST["author"], $_POST["comment"], $id);
-        $this->affP($id);
-        
-        //header("Location: ../public/index.php?a=aff&p=$id");
+        if (!isset($_GET["e"])) {
+            $myView = new View("addCom");
+            $myView->renderB();
+        } else {
+            $this->commMngr->addComm($_POST["author"], $_POST["comment"], $id);
+            $this->affP($id);
+            header("Location: ../public/index.php?a=aff&p=$id");
+        }
     }
 
 }

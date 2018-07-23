@@ -3,7 +3,7 @@ session_start();
 ?>
 <div class="page">
     <h1>Billet simple pour l'Alaska</h1>
-    <p><a href="index.php">Retour à la page d'accueil</a></p>
+    <p><a href="index.php?a=admin">Retour à la page d'accueil</a></p>
     <h3><?= $param["title"]." par ".$param["author"]." le <em>".$param["deiz_f"]."</em>"; ?></h3>
     <div class="post">
         <p>

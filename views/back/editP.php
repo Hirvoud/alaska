@@ -3,10 +3,10 @@ session_start();
 ?>
 <div class="page">
     <h1>Billet simple pour l'Alaska</h1>
-    <p><a href="index.php">Retour à la page d'accueil</a></p>
+    <p><a href="index.php?a=admin">Retour à la page d'accueil</a></p>
     <h2>Modifier un chapitre</h2>
     <p>
-        <form method="POST" action="index.php?a=modP&p=<?= $param['id']; ?>">
+        <form method="POST" action="index.php?a=mod&p=<?= $param['id']; ?>&e=submit">
             Titre :<br />
             <input type="text" name="title" value="<?= $param["title"];?>"><br /><br />
             Contenu :<br />

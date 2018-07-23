@@ -29,8 +29,9 @@ class UserMngr extends Mngr {
             $q->bindValue(":pseudo", $pseudo);
             $q->execute();
             $pass = $q->fetch(PDO::FETCH_ASSOC);
-
+            
             if (password_verify($password, $pass["hash_pass"]) == true) {
+                session_start();
                 $_SESSION["pseudo"] = $pseudo;
                 header("Location: index.php?a=admin");
             } else {

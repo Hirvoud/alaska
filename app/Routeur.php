@@ -10,11 +10,10 @@ class Routeur {
                             "add"       =>  ["controller" => "BackCont", "method" => "addPost"], //ajouter un post
                             "addP"      =>  ["controller" => "BackCont", "method" => "addP"], //ouvrir la page d'ajout
                             "aff"       =>  ["controller" => "BackCont", "method" => "affP"], //afficher un post
-                            "mod"       =>  ["controller" => "BackCont", "method" => "modP"], //ouvrir la page de modification
-                            "modP"      =>  ["controller" => "BackCont", "method" => "editP"], //modifier un post
-                            "com"       =>  ["controller" => "BackCont", "method" => "addC"], //ouvrir la page d'ajout de commentaire
-                            "addC"      =>  ["controller" => "BackCont", "method" => "addCom"], //ajouter un commentaire
+                            "mod"       =>  ["controller" => "BackCont", "method" => "editP"], //modifier un post
+                            "com"       =>  ["controller" => "BackCont", "method" => "addCom"], //ajouter un commentaire
                             "check"     =>  ["controller" => "BackCont", "method" => "check"], //vérification des infos de connexion
+                            "deco"      =>  ["controller" => "BackCont", "method" => "deco"], //déconnexion d'utilisateur
 
                             "home"      =>  ["controller" => "FrontCont", "method" => "getPosts"], //afficher les posts
                             "fAff"      =>  ["controller" => "FrontCont", "method" => "affP"], //afficher un post

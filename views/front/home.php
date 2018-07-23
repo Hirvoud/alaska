@@ -13,6 +13,6 @@ session_start();
             ?>
         </p>
     </div>
-    <p><a href="index.php?a=admin">Admin</a>
-    <p><a href="index.php?a=signin">S'inscrire</a>
+    <p><a href="index.php?a=admin">Debug admin</a>
+    <p><a href="index.php?a=signin">S'inscrire ou se connecter</a>
 </div>
