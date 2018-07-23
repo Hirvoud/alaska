@@ -4,7 +4,6 @@ require_once("Mngr.php");
 
 class CommMngr extends Mngr {
 
-
     public function addComm($author, $comment, $postId) {
         $db = $this->dbConnect();
         $ins = $db->prepare("INSERT INTO comms(author, comment, id_post, deiz_com) VALUES(?, ?, ?, NOW())");

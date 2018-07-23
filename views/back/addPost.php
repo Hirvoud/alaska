@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <div class="page">
     <h1>Billet simple pour l'Alaska</h1>
     <p><a href="index.php">Retour à la page d'accueil</a></p>

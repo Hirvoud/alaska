@@ -13,11 +13,13 @@ class Post {
 
     }
 
-    public function hydrate($author, $title, $content) {
+    public function hydrate($id, $author, $title, $content, $date) {
     
+        $this->setId($id);
         $this->setAuthor($author);
         $this->setTitle($title);
         $this->setContent($content);
+        $this->setDate($date);
         
     }
 
