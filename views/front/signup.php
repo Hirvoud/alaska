@@ -1,7 +1,7 @@
 <?php
 session_start();
 ?>
-<div class="page">
+<div class="container">
     <h1>Billet simple pour l'Alaska</h1>
     <p><a href="index.php">Retour à la page d'accueil</a></p>
     <h2>Inscrivez-vous !</h2>

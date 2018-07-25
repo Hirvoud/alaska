@@ -21,15 +21,17 @@ class PostMngr extends Mngr {
 
     }
 
-    public function listPosts() {
+    public function listPosts()
+    {
 
         $db = $this->dbConnect();
-        $req = $db->query("SELECT id, author, title, content, DATE_FORMAT(deiz, '%d/%m/%Y à %Hh%imin%ss') AS deiz_f FROM posts ORDER BY deiz DESC LIMIT 0, 5");
-        $res = $req->fetchAll();
-        /*foreach ($res as $chap) {
+        $req = $db->query("SELECT id, author, title, content, DATE_FORMAT(deiz, '%d/%m/%Y à %Hh%i') AS deiz_f FROM posts ORDER BY deiz DESC LIMIT 0, 5");
+        $res = $req->fetchAll(PDO::FETCH_ASSOC);
+
+        /*foreach ($res as $key => $chap) {
             $post = new Post();
-            $post->hydrate($chap["id"], $chap["author"],$chap["title"], $chap["content"],$chap["deiz_f"]);
-            var_dump($post);
+            $post->hydrate($chap["id"], $chap["author"], $chap["title"], $chap["content"], $chap["deiz_f"]);
+            $res[$key] = $post;
         }*/
         return $res;
     }
@@ -37,11 +39,14 @@ class PostMngr extends Mngr {
     public function vPost($id) {
 
         $db = $this->dbConnect();
-        $req = $db->prepare("SELECT id, author, title, content, DATE_FORMAT(deiz, '%d/%m/%Y à %Hh%imin%ss') AS deiz_f FROM posts WHERE id=?");
-        $req->execute(array($id));
-        $post = $req->fetch();
+        $q = $db->prepare("SELECT id, author, title, content, DATE_FORMAT(deiz, '%d/%m/%Y à %Hh%i') AS deiz_f FROM posts WHERE id=?");
+        $q->execute(array($id));
+        $req = $q->fetch(PDO::FETCH_ASSOC);
 
-        return $post;
+        /*$post = new Post();
+        $post->hydrate($req["id"], $req["author"], $req["title"], $req["content"], $req["deiz_f"]);*/
+
+        return $req;
 
     }
 

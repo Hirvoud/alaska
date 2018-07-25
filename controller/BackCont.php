@@ -29,37 +29,49 @@ class BackCont {
     public function getPosts() {
         $list = $this->postMngr->listPosts();
 
+        foreach ($list as $key => $chap) {
+            $post = new Post();
+            $post->hydrate($chap["id"], $chap["author"], $chap["title"], $chap["content"], $chap["deiz_f"]);
+            $list[$key] = $post;
+        }
+
         $myView = new View("home");
         $myView->renderB($list);
     }
 
-    public function addP() {
-        $myView = new View("addPost");
-        $myView->renderB();
-    }
-
     public function addPost() {
-        //test session
-        
-        //$p = $this->postMngr->addPost($_POST["author"], $_POST["title"], $_POST["content"]);
 
-        $post = new Post();
-        $post->hydrate($_POST["author"], $_POST["title"], $_POST["content"]);
-        
-        if (!empty($post->error)) {
-            echo $post->error["id"]; //à travailler !
+        if (!isset($_GET["e"])) {
+            $myView = new View("addPost");
+            $myView->renderB();
         } else {
-            $this->postMngr->addPost($post->getAuthor(), $post->getTitle(), $post->getContent());
-            header("Location: ../public/index.php");
-        }
+            $post = new Post();
+            $post->hydrate($_POST["author"], $_POST["title"], $_POST["content"]);
 
+            if (!empty($post->error)) {
+                echo $post->error["id"]; //à travailler
+            } else {
+                $this->postMngr->addPost($post->getAuthor(), $post->getTitle(), $post->getContent());
+                header("Location: ../public/index.php?a=admin");
+            }
+        }
     }
 
     public function affP($id) {
+                
         $chap = $this->postMngr->vPost($id);
-        $comm = $this->commMngr->vComms($id);
+        $post = new Post();
+        $post->hydrate($chap["id"], $chap["author"], $chap["title"], $chap["content"], $chap["deiz_f"]);
+
+        $comment = $this->commMngr->vComms($id);
+        foreach ($comment as $key => $value) {
+            $comm = new Comm();
+            $comm->hydrate($value["id"], $value["author"], $value["comment"], $value["id_post"], $value["deiz_cf"]);
+            $comment[$key] = $comm;
+        }
+
         $myView = new View("chap");
-        $myView->renderB($chap, $comm);
+        $myView->renderB($post, $comment);
     }
 
     public function editP($id) {
@@ -84,4 +96,11 @@ class BackCont {
         }
     }
 
+    public function report($id) {
+        $rep = $this->commMngr->vComm($id);
+
+        $myView = new View("report");
+        $myView->renderB($rep); 
+
+    }
 }

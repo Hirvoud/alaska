@@ -1,18 +1,18 @@
 <?php
 session_start();
 ?>
-<div class="page">
+<div class="container">
     <h1>Billet simple pour l'Alaska</h1>
     <h2>Derniers chapitres</h2>
     <div class="post">
         <p>
             <?php
             foreach ($param as $chap) {
-                echo    "<h3>" . htmlspecialchars($chap["title"]) . " par " . htmlspecialchars($chap["author"]) . " – <a href='index.php?a=fAff&p=".$chap["id"]."'>Afficher</a></h3><p>". htmlspecialchars(mb_strimwidth($chap["content"], 0, 410))."…</p>";
+                echo "<h3>" . $chap->getTitle() . " par " . $chap->getAuthor() . " – <a href='index.php?a=fAff&p=" . $chap->getId() . "'>Afficher</a></h3><p>" . mb_strimwidth($chap->getContent(), 0, 410) . "…</p>";
             }
             ?>
         </p>
     </div>
     <p><a href="index.php?a=admin">Debug admin</a>
-    <p><a href="index.php?a=signin">S'inscrire ou se connecter</a>
+    <p><a href="index.php?a=signup">S'inscrire ou se connecter</a>
 </div>

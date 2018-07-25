@@ -12,6 +12,16 @@ class Comm {
 
     }
 
+    public function hydrate($id, $author, $comment, $postId, $date) {
+    
+        $this->setId($id);
+        $this->setAuthor($author);
+        $this->setComment($comment);
+        $this->setPostId($postId);
+        $this->setDate($date);
+        
+    }
+
     public function getAuthor() {
 
         return $this->_author;

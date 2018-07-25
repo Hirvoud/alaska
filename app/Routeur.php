@@ -6,20 +6,21 @@ class Routeur {
     private $param;
     private $routes =   [
                             
-                            "admin"     =>  ["controller" => "BackCont", "method" => "getPosts"], //afficher les posts
-                            "add"       =>  ["controller" => "BackCont", "method" => "addPost"], //ajouter un post
-                            "addP"      =>  ["controller" => "BackCont", "method" => "addP"], //ouvrir la page d'ajout
-                            "aff"       =>  ["controller" => "BackCont", "method" => "affP"], //afficher un post
-                            "mod"       =>  ["controller" => "BackCont", "method" => "editP"], //modifier un post
-                            "com"       =>  ["controller" => "BackCont", "method" => "addCom"], //ajouter un commentaire
-                            "check"     =>  ["controller" => "BackCont", "method" => "check"], //vérification des infos de connexion
-                            "deco"      =>  ["controller" => "BackCont", "method" => "deco"], //déconnexion d'utilisateur
+                            "admin"     =>  ["controller" => "BackCont", "method" => "getPosts"],       //afficher les posts
+                            "add"       =>  ["controller" => "BackCont", "method" => "addPost"],        //ajouter un post
+                            "aff"       =>  ["controller" => "BackCont", "method" => "affP"],           //afficher un post
+                            "mod"       =>  ["controller" => "BackCont", "method" => "editP"],          //modifier un post
+                            "com"       =>  ["controller" => "BackCont", "method" => "addCom"],         //ajouter un commentaire
+                            "check"     =>  ["controller" => "BackCont", "method" => "check"],          //vérification des infos de connexion
+                            "deco"      =>  ["controller" => "BackCont", "method" => "deco"],           //déconnexion d'utilisateur
+                            "report"    =>  ["controller" => "BackCont", "method" => "report"],         //envoi d'un signalement
 
-                            "home"      =>  ["controller" => "FrontCont", "method" => "getPosts"], //afficher les posts
-                            "fAff"      =>  ["controller" => "FrontCont", "method" => "affP"], //afficher un post
-                            "signin"    =>  ["controller" => "FrontCont", "method" => "signIn"], //formulaire inscription
-                            "inscrip"   =>  ["controller" => "FrontCont", "method" => "inscrip"], //validation inscription
-                            "login"     =>  ["controller" => "FrontCont", "method" => "login"], //formulaire connexion
+                            "home"      =>  ["controller" => "FrontCont", "method" => "getPosts"],      //afficher les posts
+                            "fAff"      =>  ["controller" => "FrontCont", "method" => "affP"],          //afficher un post
+                            "signup"    =>  ["controller" => "FrontCont", "method" => "signUp"],        //formulaire inscription
+                            "inscrip"   =>  ["controller" => "FrontCont", "method" => "inscrip"],       //validation inscription
+                            "login"     =>  ["controller" => "FrontCont", "method" => "login"],         //formulaire connexion
+                            "err"       =>  ["controller" => "FrontCont", "method" => "err"]            //gestion des erreurs
                             
                         ];
     
@@ -52,7 +53,7 @@ class Routeur {
            
         }
         else {
-            echo "404";
+            header("Location: index.php?a=err&p=404");
         }    
 
     }

@@ -1,7 +1,11 @@
 <?php
 session_start();
+if (!isset($_SESSION["pseudo"])) {
+    header("Location: ../views/front/denied.php");
+}
 ?>
-<div class="page">
+
+<div class="container">
     <h1>Billet simple pour l'Alaska</h1>
     <p><a href="index.php?a=admin">Retour à la page d'accueil</a></p>
     <h2>Ajouter un commentaire</h2>

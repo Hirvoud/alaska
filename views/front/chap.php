@@ -1,15 +1,15 @@
 <?php
 session_start();
 ?>
-<div class="page">
+<div class="container">
     <h1>Billet simple pour l'Alaska</h1>
     <p><a href="index.php">Retour à la page d'accueil</a></p>
-    <h3><?= htmlspecialchars($param["title"])." par ".htmlspecialchars($param["author"])." le <em>".$param["deiz_f"]."</em>"; ?></h3>
+    <h3><?= $param->getTitle() . " par " . $param->getAuthor() . " le <em>" . $param->getDate() . "</em>"; ?></h3>
     <div class="post">
         <p>
             <?php
             
-                echo "<p>". $param["content"]. "</p>";
+                echo "<p>". $param->getContent(). "</p>";
             
             ?>
         </p>
@@ -18,7 +18,7 @@ session_start();
     <p><a href="index.php?a=login">Connectez-vous pour ajouter un commentaire</a></p>
     <?php
         foreach ($p2 as $comm) {
-            echo    "<p><span class='auteur'>" . htmlspecialchars($comm["author"]) . "</span>, le <em>".$comm["deiz_cf"]."</em></p><p>". htmlspecialchars($comm["comment"])."</p>";
+            echo    "<p><span class='auteur'>" . htmlspecialchars($comm->getAuthor()) . "</span>, le <em>".$comm->getDate(). "</em></p><p>" . htmlspecialchars($comm->getComment()) . "</p>";
         }
     ?>
 </div>
