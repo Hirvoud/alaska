@@ -16,79 +16,108 @@ class BackCont {
         $pseudo = $_POST["pseudo"];
         $password = $_POST["password"];
 
-        $this->userMngr->check($pseudo, $password);
+        $pass = $this->userMngr->check($pseudo, $password);
+
+        if (password_verify($password, $pass["hash_pass"])) {
+            unset($_SESSION["user"]);
+            $_SESSION["user"]["pseudo"] = $pseudo; 
+            header("Location: index.php?a=admin");
+        } else {
+            header("Location: index.php");
+        }
     }
     
     public function deco() {
-        session_start();
         $_SESSION = array();
-        session_destroy();
+        unset($_SESSION);
         header("Location: index.php");
     }
 
     public function getPosts() {
-        $list = $this->postMngr->listPosts();
+        /*$list = $this->postMngr->listPosts();
+        $res = $this->userMngr->getUser($_SESSION["user"]["pseudo"]);
 
-        foreach ($list as $key => $chap) {
-            $post = new Post();
-            $post->hydrate($chap["id"], $chap["author"], $chap["title"], $chap["content"], $chap["deiz_f"]);
-            $list[$key] = $post;
+        $user = new User($res);
+
+        if ($user->getAdmin() == "1") {
+            $myView = new View("back/home");
+            $myView->render($list);
+        } else {
+            $myView = new View("front/home");
+            $myView->render($list);
+        }*/
+        
+
+        if (isset($_SESSION["user"])) {
+            $list = $this->postMngr->listPosts();
+            $myView = new View("back/home");
+            $myView->render($list);
+        } else {
+            header("Location: index.php");
         }
 
-        $myView = new View("home");
-        $myView->renderB($list);
     }
 
     public function addPost() {
 
-        if (!isset($_GET["e"])) {
-            $myView = new View("addPost");
-            $myView->renderB();
-        } else {
-            $post = new Post();
-            $post->hydrate($_POST["author"], $_POST["title"], $_POST["content"]);
+        $res = $this->userMngr->getUser($_SESSION["user"]["pseudo"]);
+        $user = new User($res);
 
-            if (!empty($post->error)) {
-                echo $post->error["id"]; //à travailler
+        if ($user->getAdmin() == "1") {
+            if (!isset($_GET["e"])) {
+                $myView = new View("back/addPost");
+                $myView->render();
             } else {
-                $this->postMngr->addPost($post->getAuthor(), $post->getTitle(), $post->getContent());
+                $this->postMngr->addPost($_POST["author"], $_POST["title"], $_POST["content"]);
                 header("Location: ../public/index.php?a=admin");
             }
+        } else {
+            header("Location: index.php?a=err&p=denied");
         }
     }
 
     public function affP($id) {
-                
         $chap = $this->postMngr->vPost($id);
-        $post = new Post();
-        $post->hydrate($chap["id"], $chap["author"], $chap["title"], $chap["content"], $chap["deiz_f"]);
+        if ($chap !== false) {
+        $post = new Post($chap);
+        
 
         $comment = $this->commMngr->vComms($id);
-        foreach ($comment as $key => $value) {
-            $comm = new Comm();
-            $comm->hydrate($value["id"], $value["author"], $value["comment"], $value["id_post"], $value["deiz_cf"]);
-            $comment[$key] = $comm;
-        }
 
-        $myView = new View("chap");
-        $myView->renderB($post, $comment);
+        if (!isset($_SESSION["user"])) {
+            $myView = new View("front/chap");
+            $myView->render($post, $comment);
+        } else {
+            $myView = new View("back/chap");
+            $myView->render($post, $comment);
+        }
+        } else {
+            echo "404";
+        }
     }
 
     public function editP($id) {
-        if (!isset($_GET["e"])) {
-            $chap = $this->postMngr->vPost($id);
-            $myView = new View("editP");
-            $myView->renderB($chap);
+        $res = $this->userMngr->getUser($_SESSION["user"]["pseudo"]);
+        $user = new User($res);
+
+        if ($user->getAdmin() == "1") {
+            if (!isset($_GET["e"])) {
+                $chap = $this->postMngr->vPost($id);
+                $myView = new View("back/editP");
+                $myView->render($chap);
+            } else {
+                $this->postMngr->upPost($id);
+                header("Location: ../public/index.php?a=aff&p=$id");
+            }
         } else {
-            $this->postMngr->upPost($id);
-            header("Location: ../public/index.php?a=aff&p=$id");
+            header("Location: index.php?a=err&p=denied");
         }
     }
     
     public function addCom($id) {
         if (!isset($_GET["e"])) {
-            $myView = new View("addCom");
-            $myView->renderB();
+            $myView = new View("back/addCom");
+            $myView->render();
         } else {
             $this->commMngr->addComm($_POST["author"], $_POST["comment"], $id);
             $this->affP($id);
@@ -97,10 +126,33 @@ class BackCont {
     }
 
     public function report($id) {
-        $rep = $this->commMngr->vComm($id);
-
-        $myView = new View("report");
-        $myView->renderB($rep); 
+        $rep = $this->commMngr->report($id);
+        /*$myView = new View("back/report");
+        $myView->render($rep);*/
 
     }
+
+    public function tdb() {
+        $res = $this->userMngr->getUser($_SESSION["user"]["pseudo"]);
+        $user = new User($res);
+
+        if ($user->getAdmin() == "1") {
+            $reports = $this->commMngr->vReport();
+            
+            
+            $myView = new View("back/admin");
+            $myView->render($reports);
+
+        } else {
+            header("Location: index.php?a=err&p=denied");
+        }
+    }
+
+    public function del($id) {
+        $this->commMngr->delComm($id);
+        $secondsWait = 1;
+        //header("Location: tdb");
+        
+    }
+
 }

@@ -14,9 +14,10 @@ class Routeur {
                             "check"     =>  ["controller" => "BackCont", "method" => "check"],          //vérification des infos de connexion
                             "deco"      =>  ["controller" => "BackCont", "method" => "deco"],           //déconnexion d'utilisateur
                             "report"    =>  ["controller" => "BackCont", "method" => "report"],         //envoi d'un signalement
+                            "tdb"       =>  ["controller" => "BackCont", "method" => "tdb"],            //envoi d'un signalement
+                            "del"       =>  ["controller" => "BackCont", "method" => "del"],             //envoi d'un signalement
 
                             "home"      =>  ["controller" => "FrontCont", "method" => "getPosts"],      //afficher les posts
-                            "fAff"      =>  ["controller" => "FrontCont", "method" => "affP"],          //afficher un post
                             "signup"    =>  ["controller" => "FrontCont", "method" => "signUp"],        //formulaire inscription
                             "inscrip"   =>  ["controller" => "FrontCont", "method" => "inscrip"],       //validation inscription
                             "login"     =>  ["controller" => "FrontCont", "method" => "login"],         //formulaire connexion
@@ -51,8 +52,7 @@ class Routeur {
             $method = $this->routes[$action]["method"];
             $currentCont->$method($this->getParams());
            
-        }
-        else {
+        } else {
             header("Location: index.php?a=err&p=404");
         }    
 

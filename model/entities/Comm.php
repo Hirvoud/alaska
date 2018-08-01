@@ -8,18 +8,19 @@ class Comm {
     private $_id;
     private $_postId;
 
-    public function __construct() {
-
+    public function __construct($data) {
+        $this->hydrate($data);
     }
 
-    public function hydrate($id, $author, $comment, $postId, $date) {
-    
-        $this->setId($id);
-        $this->setAuthor($author);
-        $this->setComment($comment);
-        $this->setPostId($postId);
-        $this->setDate($date);
-        
+    public function hydrate(array $data) {
+
+        foreach ($data as $key => $value) {
+            $method = 'set' . ucfirst($key);
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
+
     }
 
     public function getAuthor() {
@@ -77,14 +78,14 @@ class Comm {
 
     }
 
-    public function setDate($date) {
+    public function setDeiz_cf($date) {
 
         //format datetime
         $this->_date = $date;
 
     }
 
-    public function setPostId($postId) {
+    public function setId_post($postId) {
 
         $postId = (int)$postId;
         if ($postId > 0) {

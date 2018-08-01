@@ -1,6 +1,5 @@
 <?php
 
-require_once("Mngr.php");
 
 class UserMngr extends Mngr {
 
@@ -29,18 +28,21 @@ class UserMngr extends Mngr {
             $q->bindValue(":pseudo", $pseudo);
             $q->execute();
             $pass = $q->fetch(PDO::FETCH_ASSOC);
-            
-            if (password_verify($password, $pass["hash_pass"]) == true) {
-                session_start();
-                $_SESSION["pseudo"] = $pseudo;
-                header("Location: index.php?a=admin");
-            } else {
-                header("Location: index.php");
-            }
+            return $pass;
         } else {
             header("Location: index.php");
         }
 
+    }
+
+    public function getUser($pseudo) {
+        $db = $this->dbConnect();
+
+        $q = $db->prepare("SELECT * FROM users WHERE pseudo = :pseudo");
+        $q->bindValue(":pseudo", $pseudo);
+        $q->execute();
+        $req = $q->fetch(PDO::FETCH_ASSOC);
+        return $req;
     }
 
 }

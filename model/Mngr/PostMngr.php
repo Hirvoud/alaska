@@ -1,7 +1,5 @@
 <?php
 
-require_once("Mngr.php");
-
 class PostMngr extends Mngr {
 
     public function addPost($author, $title, $content) {
@@ -14,7 +12,7 @@ class PostMngr extends Mngr {
 
         $db = $this->dbConnect();
 
-        $db->prepare("DELETE * FROM posts WHERE id=$id");
+        $db->prepare("DELETE * FROM posts WHERE id=$id"); //jointures
         $db->execute();
         $db->prepare("DELETE * FROM comms WHERE postId=$id");
         $db->execute();
@@ -25,14 +23,13 @@ class PostMngr extends Mngr {
     {
 
         $db = $this->dbConnect();
-        $req = $db->query("SELECT id, author, title, content, DATE_FORMAT(deiz, '%d/%m/%Y à %Hh%i') AS deiz_f FROM posts ORDER BY deiz DESC LIMIT 0, 5");
+        $req = $db->query("SELECT id, author, title, content, DATE_FORMAT(deiz, '%d/%m/%Y à %Hh%i') AS deiz_f FROM posts ORDER BY deiz DESC LIMIT 0, 7");
         $res = $req->fetchAll(PDO::FETCH_ASSOC);
-
-        /*foreach ($res as $key => $chap) {
-            $post = new Post();
-            $post->hydrate($chap["id"], $chap["author"], $chap["title"], $chap["content"], $chap["deiz_f"]);
+        foreach ($res as $key => $chap) {
+            $post = new Post($chap);
             $res[$key] = $post;
-        }*/
+        }
+
         return $res;
     }
 
@@ -42,10 +39,9 @@ class PostMngr extends Mngr {
         $q = $db->prepare("SELECT id, author, title, content, DATE_FORMAT(deiz, '%d/%m/%Y à %Hh%i') AS deiz_f FROM posts WHERE id=?");
         $q->execute(array($id));
         $req = $q->fetch(PDO::FETCH_ASSOC);
-
-        /*$post = new Post();
-        $post->hydrate($req["id"], $req["author"], $req["title"], $req["content"], $req["deiz_f"]);*/
-
+        if ($req) {
+        $post = new Post($req);
+        }
         return $req;
 
     }

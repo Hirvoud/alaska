@@ -7,20 +7,20 @@ class Post {
     private $_date;
     private $_id;
     private $_title;
-    public $error = [];
 
-    public function __construct() {
-
+    public function __construct($data) {
+        $this->hydrate($data);
     }
 
-    public function hydrate($id, $author, $title, $content, $date) {
-    
-        $this->setId($id);
-        $this->setAuthor($author);
-        $this->setTitle($title);
-        $this->setContent($content);
-        $this->setDate($date);
+    public function hydrate(array $data) {
         
+        foreach ($data as $key => $value) {
+            $method = 'set' . ucfirst($key);          
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
+
     }
 
     public function getAuthor() {
@@ -80,9 +80,9 @@ class Post {
 
     }
 
-    public function setDate($date) {
+    public function setDeiz_f($deiz_f) {
 
-        $this->_date = $date;
+        $this->_date = $deiz_f;
 
     }
 

@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 ?>
 <div class="container">
     <h1>Billet simple pour l'Alaska</h1>

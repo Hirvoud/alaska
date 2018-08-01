@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 ?>
 <div class="container">
     <h1>Billet simple pour l'Alaska</h1>
@@ -7,8 +7,8 @@ session_start();
     <div class="post">
         <p>
             <?php
-            foreach ($param as $chap) {
-                echo "<h3>" . $chap->getTitle() . " par " . $chap->getAuthor() . " – <a href='index.php?a=fAff&p=" . $chap->getId() . "'>Afficher</a></h3><p>" . mb_strimwidth($chap->getContent(), 0, 410) . "…</p>";
+            foreach ($param1 as $chap) {
+                echo "<h3>" . htmlspecialchars($chap->getTitle()) . " par " . htmlspecialchars($chap->getAuthor()) . " – <a href='index.php?a=aff&p=" . htmlspecialchars($chap->getId()) . "'>Afficher</a></h3><p>" . htmlspecialchars(mb_strimwidth($chap->getContent(), 0, 410)) . "…</p>";
             }
             ?>
         </p>

@@ -1,5 +1,6 @@
 body {
     font-family: Roboto, arial, sans-serif;
+    background-image: url("../images/Alaska_Railroad.jpg");
 }
 
 h1, h3 {
@@ -7,32 +8,33 @@ h1, h3 {
 }
 
 h3 {
-    background-color:#F09D9D;
+    background-color:rgb(250, 210, 123);
     color:black;
     font-size:1.2em;
-    width: 70%;
     margin-bottom:0px;
     margin: auto;
 }
 
 .post p {
-    background-color:#CCCCCC;
-    margin-top:0px;
+    background-color:rgb(230, 230, 230);
+    text-align: justify;
 }
 
 .post {
-    width:70%;
     margin: auto;
-}
-
-a
-{
-    text-decoration: none;
-    color: blue;
-    font-style: italic;
 }
 
 .auteur {
     font-size:1.1em;
     font-weight: 500;
+}
+
+.vert {
+    color: green;
+    font-size: 2em;
+}
+
+.rouge {
+    color: red;
+    font-size: 2em;
 }

@@ -13,60 +13,46 @@ class FrontCont {
     }
 
     public function signUp() {
-        $myView = new View("signup");
-        $myView->renderF();
+        $myView = new View("front/signup");
+        $myView->render();
     }
 
     public function inscrip() {
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
         $this->UserMngr->inscrip($_POST["pseudo"], $_POST["email"], $password);
-        $myView = new View("merci");
-        $myView->renderF($_POST["pseudo"]);
+        $myView = new View("front/merci");
+        $myView->render($_POST["pseudo"]);
     }
 
     public function login() {
-        $myView = new View("login");
-        $myView->renderF();
+        $myView = new View("front/login");
+        $myView->render();
     }
 
     public function err() {
         if ($_GET["p"] == "denied") {
-            $myView = new View("denied");
-            $myView->renderF();
+            $myView = new View("front/denied");
+            $myView->render();
         } elseif ( $_GET["p"] == "404") {
-            $myView = new View("404");
-            $myView->renderF();
+            $myView = new View("front/404");
+            $myView->render();
         }
     }
 
     public function getPosts() {
         $list = $this->postMngr->listPosts();
 
-        foreach ($list as $key => $chap) {
-            $post = new Post();
-            $post->hydrate($chap["id"], $chap["author"], $chap["title"], $chap["content"], $chap["deiz_f"]);
-            $list[$key] = $post;
-        }
-
-        $myView = new View("home");
-        $myView->renderF($list);
-
+        $myView = new View("front/home");
+        $myView->render($list);
     }
 
-    public function affP($id) {
+    /*public function affP($id) {
         $chap = $this->postMngr->vPost($id);
-        $post = new Post();
-        $post->hydrate($chap["id"], $chap["author"], $chap["title"], $chap["content"], $chap["deiz_f"]);
+        $post = new Post($chap);
 
         $comment = $this->commMngr->vComms($id);
-        foreach ($comment as $key => $value) {
-            $comm = new Comm();
-            $comm->hydrate($value["id"], $value["author"], $value["comment"], $value["id_post"], $value["deiz_cf"]);
-            $comment[$key] = $comm;
-        }
-
-        $myView = new View("chap");
-        $myView->renderF($post, $comment);
-    }
+        $myView = new View("front/chap");
+        $myView->render($post, $comment);
+    }*/
 
 }
