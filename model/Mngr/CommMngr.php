@@ -16,6 +16,15 @@ class CommMngr extends Mngr {
         $req->execute();
     }
 
+    public function delComms($pseudo) {
+
+        $db = $this->dbConnect();
+        $req = $db->prepare("DELETE FROM comms WHERE author = :author");
+        $req->bindValue(":author", $pseudo);
+        $req->execute();
+
+    }
+
     public function vComms($postId) {
 
         $db = $this->dbConnect();
@@ -34,8 +43,37 @@ class CommMngr extends Mngr {
         $db = $this->dbConnect();
         $req = $db->query("SELECT id, author, comment, id_post, DATE_FORMAT(deiz_com, '%d/%m/%Y à %Hh%imin%ss') AS deiz_cf FROM comms WHERE id = $id");
         $res = $req->fetch(PDO::FETCH_ASSOC);
+
+        $comm = new Comm($res);
+        
+        return $comm;
+    }
+
+    public function getComms($pseudo) {
+
+        $db = $this->dbConnect();
+        $req = $db->prepare("SELECT id, author, comment, id_post, DATE_FORMAT(deiz_com, '%d/%m/%Y à %Hh%imin%ss') AS deiz_cf FROM comms WHERE author = :author");
+        $req->bindValue(":author", $pseudo);
+        $req->execute();
+        $res = $req->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($res as $key => $value) {
+            $comm = new Comm($value);
+            $res[$key] = $comm;
+        }
         
         return $res;
+    }
+
+    public function upComm($id)
+    {
+
+        $db = $this->dbConnect();
+        $maj = $db->prepare("UPDATE comms SET comment = :comment WHERE id = :id");
+        $maj->bindValue(":id", $id);
+        $maj->bindValue(":comment", $_POST["comment"]);
+        $maj->execute();
+
     }
 
     public function report($id) {
@@ -60,6 +98,15 @@ class CommMngr extends Mngr {
         }
 
         return $reports;
+    }
+
+    public function val($id) {
+
+        $db = $this->dbConnect();
+        $req = $db->prepare("UPDATE comms SET report = :report WHERE id = :id");
+        $req->bindValue(":id", $id);
+        $req->bindValue(":report", 0);
+        $req->execute();
     }
 
 }

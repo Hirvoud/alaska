@@ -1,9 +1,8 @@
-<?php
-
-?>
+<div class="navbar"><a href="index.php?a=signup">S'inscrire ou se connecter</a></div>
 <div class="container">
     <h1>Billet simple pour l'Alaska</h1>
     <h2>Derniers chapitres</h2>
+
     <div class="post">
         <p>
             <?php
@@ -13,6 +12,5 @@
             ?>
         </p>
     </div>
-    <p><a href="index.php?a=admin">Debug admin</a>
-    <p><a href="index.php?a=signup">S'inscrire ou se connecter</a>
+    <p><a href="index.php?a=acc">Debug admin</a>
 </div>

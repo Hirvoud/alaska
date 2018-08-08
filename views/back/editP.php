@@ -1,6 +1,7 @@
+<div class="navbar">Utilisateur : <a href="index.php?a=tdb"><?= $_SESSION["user"]["pseudo"]; ?></a> − <a href="index.php?a=deco">Déconnexion</a></div>
 <div class="container">
     <h1>Billet simple pour l'Alaska</h1>
-    <p><a href="index.php?a=admin">Retour à la page d'accueil</a></p>
+    <p><a href="index.php?a=acc">Retour à la page d'accueil</a></p>
     <h2>Modifier un chapitre</h2>
     <p>
         <form method="POST" action="index.php?a=mod&p=<?= htmlspecialchars($param1["id"]); ?>&e=submit">
@@ -11,4 +12,5 @@
             <input type="submit" value="Envoyer">
         </form>
     </p>
+    <p><span class="attention"><a href="index.php?a=delP&p=<?= $_GET["p"]; ?>">Supprimer cet article (définitif !)</a></span></p>
 </div>

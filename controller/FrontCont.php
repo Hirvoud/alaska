@@ -46,13 +46,4 @@ class FrontCont {
         $myView->render($list);
     }
 
-    /*public function affP($id) {
-        $chap = $this->postMngr->vPost($id);
-        $post = new Post($chap);
-
-        $comment = $this->commMngr->vComms($id);
-        $myView = new View("front/chap");
-        $myView->render($post, $comment);
-    }*/
-
 }

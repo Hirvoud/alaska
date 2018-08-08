@@ -1,6 +1,4 @@
-<?php
-
-?>
+<div class="navbar"><a href="index.php?a=signup">S'inscrire ou se connecter</a></div>
 <div class="container">
     <h1>Billet simple pour l'Alaska</h1>
     

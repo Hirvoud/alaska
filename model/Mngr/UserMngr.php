@@ -16,6 +16,7 @@ class UserMngr extends Mngr {
     }
 
     public function check($pseudo, $password) {
+        
         $db = $this->dbConnect();
         
         $users = $db->prepare("SELECT count(*) FROM users WHERE pseudo = :pseudo");
@@ -30,12 +31,13 @@ class UserMngr extends Mngr {
             $pass = $q->fetch(PDO::FETCH_ASSOC);
             return $pass;
         } else {
-            header("Location: index.php");
+            header("Location: index.php?a=err&p=denied");
         }
 
     }
 
     public function getUser($pseudo) {
+        
         $db = $this->dbConnect();
 
         $q = $db->prepare("SELECT * FROM users WHERE pseudo = :pseudo");
@@ -43,6 +45,17 @@ class UserMngr extends Mngr {
         $q->execute();
         $req = $q->fetch(PDO::FETCH_ASSOC);
         return $req;
+
+    }
+
+    public function delUser($pseudo) {
+
+        $db = $this->dbConnect();
+
+        $q = $db->prepare("DELETE FROM users WHERE pseudo = :pseudo");
+        $q->bindValue(":pseudo", $pseudo);
+        $q->execute();
+
     }
 
 }

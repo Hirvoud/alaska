@@ -1,6 +1,6 @@
 body {
     font-family: Roboto, arial, sans-serif;
-    background-image: url("../images/Alaska_Railroad.jpg");
+    /*background-image: url("../images/Alaska_Railroad.jpg");*/
 }
 
 h1, h3 {
@@ -37,4 +37,8 @@ h3 {
 .rouge {
     color: red;
     font-size: 2em;
+}
+
+.chapitre {
+    display: flex;
 }

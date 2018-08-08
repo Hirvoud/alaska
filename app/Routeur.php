@@ -6,16 +6,20 @@ class Routeur {
     private $param;
     private $routes =   [
                             
-                            "admin"     =>  ["controller" => "BackCont", "method" => "getPosts"],       //afficher les posts
+                            "acc"       =>  ["controller" => "BackCont", "method" => "getPosts"],       //afficher les posts
                             "add"       =>  ["controller" => "BackCont", "method" => "addPost"],        //ajouter un post
                             "aff"       =>  ["controller" => "BackCont", "method" => "affP"],           //afficher un post
                             "mod"       =>  ["controller" => "BackCont", "method" => "editP"],          //modifier un post
+                            "modC"      =>  ["controller" => "BackCont", "method" => "editC"],          //modifier un post
                             "com"       =>  ["controller" => "BackCont", "method" => "addCom"],         //ajouter un commentaire
                             "check"     =>  ["controller" => "BackCont", "method" => "check"],          //vérification des infos de connexion
                             "deco"      =>  ["controller" => "BackCont", "method" => "deco"],           //déconnexion d'utilisateur
                             "report"    =>  ["controller" => "BackCont", "method" => "report"],         //envoi d'un signalement
-                            "tdb"       =>  ["controller" => "BackCont", "method" => "tdb"],            //envoi d'un signalement
-                            "del"       =>  ["controller" => "BackCont", "method" => "del"],             //envoi d'un signalement
+                            "tdb"       =>  ["controller" => "BackCont", "method" => "tdb"],            //affichage du tableau de bord
+                            "delA"      =>  ["controller" => "BackCont", "method" => "delA"],           //suppression d'un post
+                            "delP"      =>  ["controller" => "BackCont", "method" => "delP"],           //suppression d'un post
+                            "delC"      =>  ["controller" => "BackCont", "method" => "delC"],           //suppression d'un commentaire
+                            "val"       =>  ["controller" => "BackCont", "method" => "val"],            //validation commentaire signalé
 
                             "home"      =>  ["controller" => "FrontCont", "method" => "getPosts"],      //afficher les posts
                             "signup"    =>  ["controller" => "FrontCont", "method" => "signUp"],        //formulaire inscription
