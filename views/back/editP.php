@@ -12,5 +12,5 @@
             <input type="submit" value="Envoyer">
         </form>
     </p>
-    <p><span class="attention"><a href="index.php?a=delP&p=<?= $_GET["p"]; ?>">Supprimer cet article (définitif !)</a></span></p>
+    <p><span class="attention"><a href="index.php?a=delP&p=<?= $_GET["p"]; ?>">Supprimer cet article</a></span></p>
 </div>

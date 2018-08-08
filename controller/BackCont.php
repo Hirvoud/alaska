@@ -98,19 +98,22 @@ class BackCont {
 
     public function editP($id) {
 
-        if ($_SESSION["user"]["access"] == "admin") {
-            if (!isset($_GET["e"])) {
-                $chap = $this->postMngr->vPost($id);
-                $myView = new View("back/editP");
-                $myView->render($chap);
+        $chap = $this->postMngr->vPost($id);
+        if ($chap !== false) {
+            if ($_SESSION["user"]["access"] == "admin") {
+                if (!isset($_GET["e"])) {
+                    $myView = new View("back/editP");
+                    $myView->render($chap);
+                } else {
+                    $this->postMngr->upPost($id);
+                    header("Location: ../public/index.php?a=aff&p=$id");
+                }
             } else {
-                $this->postMngr->upPost($id);
-                header("Location: ../public/index.php?a=aff&p=$id");
+                header("Location: index.php?a=err&p=denied");
             }
         } else {
-            header("Location: index.php?a=err&p=denied");
+            head("Location: index.php?a=err&p=404");
         }
-
     }
 
     public function editC($id) {
