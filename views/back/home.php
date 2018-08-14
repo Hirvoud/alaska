@@ -9,7 +9,7 @@
                 <h3>
                     <?= htmlspecialchars($chap->getTitle()); ?> par <?= htmlspecialchars($chap->getAuthor());?> – <a href="index.php?a=aff&p=<?=htmlspecialchars($chap->getId());?>">Afficher</a>
                 </h3>
-                <p><?= htmlspecialchars(mb_strimwidth($chap->getContent(), 0, 410));?>…</p>
+                <?= mb_strimwidth($chap->getContent(), 0, 410);?>…
             <?php } ?>
 
         </p>

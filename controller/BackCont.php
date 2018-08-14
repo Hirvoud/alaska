@@ -112,7 +112,7 @@ class BackCont {
                 header("Location: index.php?a=err&p=denied");
             }
         } else {
-            head("Location: index.php?a=err&p=404");
+            header("Location: index.php?a=err&p=404");
         }
     }
 
@@ -136,13 +136,14 @@ class BackCont {
     
     public function addCom($id) {
         
-        if (!isset($_GET["e"])) {
-            $myView = new View("back/addCom");
-            $myView->render();
-        } else {
+        //if postId existe (count sur le nombre de post ayant l'id $id)
+        $count = $this->commMngr->countCom();
+        if ($count !== 1) {
             $this->commMngr->addComm($_POST["author"], $_POST["comment"], $id);
             $this->affP($id);
-            header("Location: ../public/index.php?a=aff&p=$id");
+            header("Location: index.php?a=aff&p=$id");
+        } else {
+            echo "404";
         }
 
     }

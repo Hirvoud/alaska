@@ -11,8 +11,8 @@ class UserMngr extends Mngr {
         $ins->bindValue(":pseudo", $pseudo);
         $ins->bindValue(":email", $email);
         $ins->bindValue(":hash_pass", $password);
+
         $ins->execute();
-        
     }
 
     public function check($pseudo, $password) {

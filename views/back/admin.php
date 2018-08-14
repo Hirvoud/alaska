@@ -7,7 +7,7 @@
     <div class="row">
     <?php
     foreach ($param2 as $chap) { ?>
-      <div class="col-lg-4">
+      <div class="col-lg-3" style="min-height:300px; text-align:justify;">
         <h3>
           <?= htmlspecialchars($chap->getTitle()); ?> – <a href="index.php?a=mod&p=<?= htmlspecialchars($chap->getId()); ?>">Modifier</a>
         </h3>

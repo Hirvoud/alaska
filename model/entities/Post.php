@@ -7,6 +7,7 @@ class Post {
     private $_date;
     private $_id;
     private $_title;
+    private $_error = [];
 
     public function __construct($data) {
         $this->hydrate($data);

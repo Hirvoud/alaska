@@ -65,6 +65,15 @@ class CommMngr extends Mngr {
         return $res;
     }
 
+    public function countCom($postId) {
+
+        $db = $this->dbConnect();
+        $req = $db->prepare("SELECT count(*) FROM comms WHERE postId = :postId");
+        $req->bindValue(":postId", $postId);
+        $req->execute();
+
+    }
+
     public function upComm($id)
     {
 
