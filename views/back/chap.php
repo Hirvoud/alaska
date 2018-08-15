@@ -1,6 +1,8 @@
-<div class="navbar">Utilisateur : <a href="index.php?a=tdb"><?= $_SESSION["user"]["pseudo"]; ?></a> − <a href="index.php?a=deco">Déconnexion</a></div>
+<div class="navbar"><?= $_SESSION["user"]["pseudo"]; ?> : <a href="index.php?a=tdb">Tableau de bord</a> − <a href="index.php?a=deco">Déconnexion</a></div>
 <div class="container">
-    <h1>Billet simple pour l'Alaska</h1>
+    <div class="titre col-lg-12">
+        <h1>Billet simple pour l'Alaska</h1>
+    </div>
     <p><a href="index.php?a=acc">Retour à la page d'accueil</a></p>
     <h3><?= htmlspecialchars($param1->getTitle()) . " par " . htmlspecialchars($param1->getAuthor()) . " le <em>" . htmlspecialchars($param1->getDate()) . "</em>"; ?></h3>
     <div class="post">

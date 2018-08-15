@@ -6,13 +6,18 @@ class UserMngr extends Mngr {
     public function inscrip($pseudo, $email, $password) {
 
         $db = $this->dbConnect();
-        $ins = $db->prepare("INSERT INTO users (pseudo, email, hash_pass) VALUES(:pseudo, :email, :hash_pass)");
-        
-        $ins->bindValue(":pseudo", $pseudo);
-        $ins->bindValue(":email", $email);
-        $ins->bindValue(":hash_pass", $password);
 
-        $ins->execute();
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $ins = $db->prepare("INSERT INTO users (pseudo, email, hash_pass) VALUES(:pseudo, :email, :hash_pass)");
+            
+            $ins->bindValue(":pseudo", $pseudo);
+            $ins->bindValue(":email", $email);
+            $ins->bindValue(":hash_pass", $password);
+
+            $ins->execute();
+        } else {
+            echo "email non valide";
+        }
     }
 
     public function check($pseudo, $password) {

@@ -93,9 +93,11 @@ class User
 
     public function setEmail($email)
     {
-
-        $this->_email = $email;
-
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) { //Regex : #^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$#
+            $this->_email = $email;
+        } else {
+            $_error = ["Email incorrect"];
+        }
     }
 
     public function setAdmin($admin)
@@ -103,6 +105,8 @@ class User
 
         if (is_string($admin)) {
             $this->_admin = $admin;
+        } else {
+            $_error = ["Erreur d'attribution des droits"];
         }
 
     }

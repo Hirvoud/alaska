@@ -7,6 +7,7 @@ class Comm {
     private $_date;
     private $_id;
     private $_postId;
+    private $_report;
 
     public function __construct($data) {
         $this->hydrate($data);
@@ -53,6 +54,12 @@ class Comm {
 
     }
 
+    public function getReport() {
+
+        return $this->_report;
+
+    }
+
     public function setId($id) {
 
         $id = (int)$id;
@@ -78,7 +85,7 @@ class Comm {
 
     }
 
-    public function setDeiz_cf($date) {
+    public function setDeiz_com($date) {
 
         //format datetime
         $this->_date = $date;
@@ -92,6 +99,12 @@ class Comm {
             $this->_postId = $postId;
         }
 
+    }
+
+    public function setReport($report) {
+
+        $this->_report= $report;
+        
     }
     
 }

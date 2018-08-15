@@ -39,11 +39,13 @@ class FrontCont {
         }
     }
 
-    public function getPosts() {
-        $list = $this->postMngr->listPosts();
+    public function dispHome() {
 
+        $listPosts = $this->postMngr->listPosts();
+        $lastComms = $this->commMngr->lastComms();
         $myView = new View("front/home");
-        $myView->render($list);
+        $myView->render($listPosts, $lastComms);
+
     }
 
 }

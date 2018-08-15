@@ -25,6 +25,21 @@ class CommMngr extends Mngr {
 
     }
 
+    public function lastComms() {
+        
+        $db = $this->dbConnect();
+        $req = $db->query("SELECT * FROM comms ORDER BY deiz_com DESC LIMIT 0, 6");
+        $comms = $req->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($comms as $key => $value) {
+            $comm = new Comm($value);
+            $comms[$key] = $comm;
+        }
+
+        return $comms;
+
+    }
+
     public function vComms($postId) {
 
         $db = $this->dbConnect();

@@ -48,12 +48,13 @@ class BackCont {
 
     }
 
-    public function getPosts() {
+    public function dispHome() {
       
         if (isset($_SESSION["user"])) {
-            $list = $this->postMngr->listPosts();
+            $listPosts = $this->postMngr->listPosts();
+            $lastComms = $this->commMngr->lastComms();
             $myView = new View("back/home");
-            $myView->render($list);
+            $myView->render($listPosts, $lastComms);
         } else {
             header("Location: index.php?a=err&p=denied");
         }
@@ -67,7 +68,7 @@ class BackCont {
                 $myView = new View("back/addPost");
                 $myView->render();
             } else {
-                $this->postMngr->addPost($_POST["author"], $_POST["title"], $_POST["content"]);
+                $this->postMngr->addPost($_SESSION["user"]["pseudo"], $_POST["title"], $_POST["content"]);
                 header("Location: ../public/index.php?a=acc");
             }
         } else {
