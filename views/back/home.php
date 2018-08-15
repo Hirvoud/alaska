@@ -1,14 +1,16 @@
 <div class="navbar"><?= $_SESSION["user"]["pseudo"]; ?> : <a href="index.php?a=tdb">Tableau de bord</a> − <a href="index.php?a=deco">Déconnexion</a></div>
-<div class="container">
-    <h1>Billet simple pour l'Alaska</h1>
+    <div class="col-lg-9">
+    <header class="jumbotron">
+        <h1>Billet simple pour l'Alaska</h1>
+    </header>
     <h2>Derniers chapitres</h2>
     <div class="post">
         <p>
             <?php
             foreach ($param1 as $chap) { ?>
-                <div class="col-lg-4" style="min-height:300px; text-align:justify;">
+                <div class="col-lg-4" style="min-height:310px; text-align:justify;">
                     <h3>
-                        <?= htmlspecialchars($chap->getTitle()); ?> par <?= htmlspecialchars($chap->getAuthor());?> – <a href="index.php?a=aff&p=<?=htmlspecialchars($chap->getId());?>">Afficher</a>
+                        <a href="index.php?a=aff&p=<?=htmlspecialchars($chap->getId());?>"><?= htmlspecialchars($chap->getTitle()); ?> <small>par</small> <?= htmlspecialchars($chap->getAuthor()); ?></a>
                     </h3>
                     <?= mb_strimwidth($chap->getContent(), 0, 410);?>…
                 </div>
@@ -16,7 +18,9 @@
 
         </p>
     </div>
-    <p>Derniers commentaires</p>
+            </div>
+    <div class="col-lg-3">
+    <h2>Derniers commentaires</h2>
     <div class="comms">
         <?php
         foreach ($param2 as $comm) { ?>
@@ -29,5 +33,5 @@
             <?php 
         } ?>
     </div>
-    <p><a href="index.php?a=tdb">Tableau de bord admin</a>
+    </div>
 </div>

@@ -1,6 +1,8 @@
 <div class="navbar"><?= $_SESSION["user"]["pseudo"]; ?> : <a href="index.php?a=tdb">Tableau de bord</a> − <a href="index.php?a=deco">Déconnexion</a></div>
 <div class="container">
-    <h1>Billet simple pour l'Alaska</h1>
+    <header class="jumbotron">
+        <h1>Billet simple pour l'Alaska</h1>
+    </header>
     <p class="user">Bienvenue, <?= $_SESSION["user"]["pseudo"]; ?>.</p>
     <h2>Tableau de bord d'administration</h2>
     <p><a href="index.php?a=acc">Retour à l'accueil</a></p>
@@ -8,12 +10,12 @@
     <div class="row">
     <?php
     foreach ($param2 as $chap) { ?>
-      <div class="col-lg-3" style="min-height:300px; text-align:justify;">
+      <div class="col-lg-4" style="min-height:300px; text-align:justify;">
         <h3>
-          <?= htmlspecialchars($chap->getTitle()); ?> – <a href="index.php?a=mod&p=<?= htmlspecialchars($chap->getId()); ?>">Modifier</a>
+          <a href="index.php?a=mod&p=<?= htmlspecialchars($chap->getId()); ?>"><?= htmlspecialchars($chap->getTitle()); ?></a>
         </h3>
         <p>
-          <?= htmlspecialchars(mb_strimwidth($chap->getContent(), 0, 410)); ?>…
+          <?= mb_strimwidth($chap->getContent(), 0, 410); ?>…
         </p>
       </div>
     <?php } ?>
@@ -33,12 +35,17 @@
         <?php
         foreach ($param1 as $key => $value) { ?>
           <tr>
-            <td scope="row"><?= $value->getComment();?></th>
+            <td scope="row"><?= $value->getComment();?></td>
             <td><?= $value->getAuthor(); ?></td>
             <td><a href="index.php?a=val&p=<?= $value->getId();?>"><span class="glyphicon glyphicon-ok vert" title="valider"></span></a> – <a href="index.php?a=delC&p=<?= $value->getId(); ?>"><span class="glyphicon glyphicon-remove rouge" title="supprimer"></span></a></td>
-            <td><a href="index.php?a=aff&p=<?= $value->getPostId(); ?>" target="_blank"><span class="glyphicon glyphicon-share-alt"></span></a>
+            <td><a href="index.php?a=aff&p=<?= $value->getPostId(); ?>" target="_blank"><span class="glyphicon glyphicon-share-alt"></span></a></td>
           </tr>
         <?php } ?>
       </tbody>
     </table></p>
+    <div class="profil">
+      <p>Gestion du profil</p>
+      <p><a href="#">Modification du mot de passe</a></p>
+      <p><a href="#">Gestion des utilisateurs</a></p>
+    </div>
 </div>

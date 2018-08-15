@@ -85,7 +85,7 @@ class Comm {
 
     }
 
-    public function setDeiz_com($date) {
+    public function setDeiz_cf($date) {
 
         //format datetime
         $this->_date = $date;
@@ -104,7 +104,7 @@ class Comm {
     public function setReport($report) {
 
         $this->_report= $report;
-        
+
     }
     
 }

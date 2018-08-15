@@ -11,6 +11,15 @@ class PostMngr extends Mngr {
 
     }
 
+    public function countPost($id) {
+
+        $db = $this->dbConnect();
+        $req = $db->prepare("SELECT count(*) FROM posts WHERE id = :id");
+        $req->bindValue(":id", $id);
+        $req->execute();
+
+    }
+
     public function delPost($id) {
 
         $db = $this->dbConnect();

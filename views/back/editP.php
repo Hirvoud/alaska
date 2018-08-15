@@ -1,6 +1,8 @@
 <div class="navbar"><?= $_SESSION["user"]["pseudo"]; ?> : <a href="index.php?a=tdb">Tableau de bord</a> − <a href="index.php?a=deco">Déconnexion</a></div>
 <div class="container">
-    <h1>Billet simple pour l'Alaska</h1>
+    <header class="jumbotron">
+        <h1>Billet simple pour l'Alaska</h1>
+    </header>
     <p><a href="index.php?a=acc">Retour à la page d'accueil</a></p>
     <h2>Modifier un chapitre</h2>
     <p>

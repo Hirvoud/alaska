@@ -1,6 +1,8 @@
 <div class="navbar"><a href="index.php?a=signup">S'inscrire ou se connecter</a></div>
 <div class="container">
-    <h1>Billet simple pour l'Alaska</h1>
+    <header class="jumbotron">
+        <h1>Billet simple pour l'Alaska</h1>
+    </header>
     <h2>Derniers chapitres</h2>
 
     <div class="post">
@@ -11,7 +13,7 @@
             ?>
     </div>
 
-    <p>Derniers commentaires</p>
+    <h2>Derniers commentaires</h2>
     <div class="comms">
         <?php
         foreach ($param2 as $comm) { ?>

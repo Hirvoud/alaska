@@ -136,11 +136,11 @@ class BackCont {
     }
     
     public function addCom($id) {
-        
+    
         //if postId existe (count sur le nombre de post ayant l'id $id)
-        $count = $this->commMngr->countCom();
+        $count = $this->postMngr->countPost($id);
         if ($count !== 1) {
-            $this->commMngr->addComm($_POST["author"], $_POST["comment"], $id);
+            $this->commMngr->addComm($_SESSION["user"]["pseudo"], $_POST["comment"], $id);
             $this->affP($id);
             header("Location: index.php?a=aff&p=$id");
         } else {

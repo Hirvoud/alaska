@@ -22,8 +22,10 @@
         <div id="page">
             <?php echo $content; ?>
         </div>
+        
     </body>
     <footer class="footer footer-copyright text-center py-3">
         © 2018 : Jean Forteroche − <a href="index.php?a=leg">Mentions légales</a>
     </footer>
+    
 </html>
