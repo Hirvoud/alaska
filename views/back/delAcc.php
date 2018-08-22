@@ -1,4 +1,4 @@
-    <p><a href="index.php?a=acc">Retour à la page d'accueil</a></p>
+    <p><a href="index.php">Retour à la page d'accueil</a></p>
     <h2>Supprimer votre compte (cela supprimera également tous vos commentaires)</h2>
     <p>
         <form method="POST" action="index.php?a=delA&p=<?= $param1; ?>&e=submit">

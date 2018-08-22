@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 15 août 2018 à 19:07
+-- Généré le :  mer. 22 août 2018 à 16:07
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -37,20 +37,20 @@ CREATE TABLE IF NOT EXISTS `comms` (
   `deiz_com` datetime NOT NULL,
   `report` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `comms`
 --
 
 INSERT INTO `comms` (`id`, `author`, `id_post`, `comment`, `deiz_com`, `report`) VALUES
-(15, 'Anatole', 19, 'Commentaire 2, chapitre 13.', '2018-08-13 23:29:54', 0),
 (16, 'Jean Forteroche', 18, 'Commentaire 2, chapitre 12.', '2018-08-15 15:05:10', 0),
 (5, 'Isidore', 15, 'Un autre commentaire.', '2018-07-23 14:17:52', 1),
 (6, 'Kristolf', 14, 'La verdure on et pelouse minutes la dernier.', '2018-07-23 14:34:40', 0),
 (7, 'Jean Forteroche', 19, 'Commentaire au chapitre treize.', '2018-07-29 17:02:27', 1),
 (17, 'Jean Forteroche', 14, 'Commentaire 2, chapitre 8.', '2018-08-15 15:08:22', 0),
-(13, 'Anatole', 18, 'Commentaire 1, chapitre 12.', '2018-08-07 16:29:05', 1);
+(13, 'Anatole', 18, 'Commentaire 1, chapitre 12.', '2018-08-07 16:29:05', 1),
+(20, 'DorothÃ©e', 6, 'Chapitre 5, commentaire 1.', '2018-08-22 14:43:57', 0);
 
 -- --------------------------------------------------------
 
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `content` longtext CHARACTER SET utf8 NOT NULL,
   `deiz` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `posts`
@@ -85,7 +85,7 @@ INSERT INTO `posts` (`id`, `author`, `title`, `content`, `deiz`) VALUES
 (15, 'Isidore', 'Chapitre neuf - V3', 'V3 - Tassent semence revetit car les faisans nos. Ici couraient ete viendrait ici pouvaient soufflent illumines capitaine non. Les but infiniment descendons paraissent gouverneur. Laisses blottis nos nul encourt. Prison contre toi air ecarta dirait dut. Non uns ameliorer flamboyer annoncait. Gachettes servantes situation or la surveille on. Des votre eux joies savez votre. \r\n\r\nLes comprendre ame fer frequentes executeurs caracolent. Contree retient en tu revetit dociles. Sa du aussi aimer vingt subit pieds voila. Ils poussait mamelons oui arrivera par. Car nid bete vrai peu toi mais. Ebloui poteau he on ah autant. Seulement ont sentiment quiconque fin peu nos. Poussaient pic tricolores dur arriverent peu lumineuses eclaireurs. \r\n\r\nImages ifs douane blancs pic roches. Ce endort je empire qu tempes il parler. Souleve ballots exemple jaillir comprit sur eue. Or chez main cime du vint vaut soir. Fabriquer tiendrons eux sinistres mur militaire. Habilement etonnement ca souhaitait consentiez me un ca. Le sa je tristement rougeatres au compagnies frissonner pressentit gourmettes. Sanctifier simplement toi manoeuvres son ces crispation miserables vie fraternite. \r\n', '2018-07-20 16:41:49'),
 (14, 'Hermione', 'Chapitre 8', 'Tassent semence revetit car les faisans nos. Ici couraient ete viendrait ici pouvaient soufflent illumines capitaine non. Les but infiniment descendons paraissent gouverneur. Laisses blottis nos nul encourt. Prison contre toi air ecarta dirait dut. Non uns ameliorer flamboyer annoncait. Gachettes servantes situation or la surveille on. Des votre eux joies savez votre. \r\n\r\nLes comprendre ame fer frequentes executeurs caracolent. Contree retient en tu revetit dociles. Sa du aussi aimer vingt subit pieds voila. Ils poussait mamelons oui arrivera par. Car nid bete vrai peu toi mais. Ebloui poteau he on ah autant. Seulement ont sentiment quiconque fin peu nos. Poussaient pic tricolores dur arriverent peu lumineuses eclaireurs. \r\n\r\nImages ifs douane blancs pic roches. Ce endort je empire qu tempes il parler. Souleve ballots exemple jaillir comprit sur eue. Or chez main cime du vint vaut soir. Fabriquer tiendrons eux sinistres mur militaire. Habilement etonnement ca souhaitait consentiez me un ca. Le sa je tristement rougeatres au compagnies frissonner pressentit gourmettes. Sanctifier simplement toi manoeuvres son ces crispation miserables vie fraternite. \r\n', '2018-07-20 16:37:16'),
 (18, 'Lisette', 'Chapitre 12', '<p>Pour des raisons de prudence que l&rsquo;horreur d&rsquo;un r&eacute;cent d&eacute;sastre ne permettait pas m&ecirc;me de discuter, la Soci&eacute;t&eacute; des Concerts a d&ucirc; quitter la salle du Conservatoire. Elle s&rsquo;est transport&eacute;e dans la salle de l&rsquo;Op&eacute;ra, et, jusqu&rsquo;&agrave; la construction des nouveaux b&acirc;timens de notre &eacute;cole de musique, elle continuera de s&rsquo;y r&eacute;unir. Pour l&rsquo;illustre compagnie, ce n&rsquo;est, dit-on, que l&rsquo;exil. Soit, et je veux esp&eacute;rer que ce ne sera pas la mort. Il semble pourtant, il est m&ecirc;me certain que quelque chose, et quelque chose de grand, vient de finir. Dans la vieille et glorieuse maison les exil&eacute;s ne rentreront plus. Il est muet pour toujours, le nid harmonieux qui vit &eacute;clore, il y a soixante-dix ans, les neuf chefs-d&rsquo;&oelig;uvre, alors ignor&eacute;s, qui dominent aujourd&rsquo;hui la musique tout enti&egrave;re. Soixante-dix ans, un peu moins de trois quarts de si&egrave;cle. On a peine &agrave; croire qu&rsquo;il n&rsquo;ait pour nous que cet &acirc;ge, l&rsquo;homme qui nous appara&icirc;t d&eacute;j&agrave; comme un anc&ecirc;tre, presque comme un dieu, l&agrave;-bas, &agrave; l&rsquo;origine d&rsquo;un monde.<br /><br />La voil&agrave; vide et veuve de lui, cette salle, j&rsquo;allais dire cette arche, o&ugrave; jadis il rendit ses premiers oracles. Il est juste, il est pieux de la saluer une derni&egrave;re fois, &agrave; la veille de sa ruine. J&rsquo;&eacute;cris ces pages dans la Biblioth&egrave;que du Conservatoire, tout pr&egrave;s et contre la porte close du sanctuaire abandonn&eacute;. Il n&rsquo;y a derri&egrave;re cette porte qu&rsquo;une modeste enceinte, quelques pierres et quelques cloisons de bois. Mais dans ce peu de mati&egrave;re l&rsquo;&acirc;me pure des sons a chant&eacute;. Entre ces minces parois, merveilleusement sonores, un long miracle de parfaite beaut&eacute; s&rsquo;est accompli. Je voudrais essayer de le rappeler, de retenir un moment un id&eacute;al qui nous fuit, peut-&ecirc;tre pour toujours, et dont ce lieu choisi fut non seulement le t&eacute;moin, mais l&rsquo;auxiliaire et le s&eacute;nateur.</p>', '2018-07-24 14:28:11'),
-(19, 'Merlin', 'TreiziÃ¨me chapitre', '<p>Si l&rsquo;on &eacute;tudie l&rsquo;histoire des relations internationales, on est frapp&eacute; du contraste que pr&eacute;sente la diplomatie de notre temps compar&eacute;e avec la diplomatie des temps pass&eacute;s. Ce sont, il est vrai, les m&ecirc;mes formes, les m&ecirc;me traditions et presque les m&ecirc;mes personnages ; mais tout autres apparaissent les id&eacute;es et les actes. Alors que les nations appartenaient en quelque sorte &agrave; des maisons royales, la diplomatie n&rsquo;avait &agrave; servir que les pens&eacute;es, les int&eacute;r&ecirc;ts, les passions, les caprices m&ecirc;me des souverains dont elle &eacute;tait la confidente et l&rsquo;organe. Certes, quand nos ambassadeurs ex&eacute;cutaient les instructions de Henri IV, de Richelieu, de Mazarin, de Louis XIV, ils servaient la nation en m&ecirc;me temps que le prince. Le droit public qui r&eacute;git les pays civilis&eacute;s, les traditions de la politique fran&ccedil;aise datent de l&agrave;, et nous suivons aujourd&rsquo;hui encore les voies trac&eacute;es par ces grands esprits. A ces &eacute;poques cependant, la diplomatie &eacute;tait personnelle, ou tout au moins dynastique. La volont&eacute; du prince &eacute;tait sa premi&egrave;re loi ; ses n&eacute;gociations avaient pour objet la gloire et l&rsquo;int&eacute;r&ecirc;t de la couronne, et, sans m&eacute;conna&icirc;tre le patriotisme des souverains qui inspiraient son langage et ses actes, il serait facile de relever, dans les archives diplomatiques, maintes circonstances o&ugrave; l&rsquo;int&eacute;r&ecirc;t national &eacute;tait subordonn&eacute;, sacrifi&eacute; m&ecirc;me &agrave; des pens&eacute;es &eacute;go&iuml;stes, &agrave; des passions personnelles, &agrave; des consid&eacute;rations secon- daires ou mis&eacute;rables, dont il appartient &agrave; l&rsquo;histoire de faire justice. Enfin, &agrave; ces m&ecirc;mes &eacute;poques, les nations ne se connaissaient que par les relations &eacute;tablies entre les cours ou par les sanglantes rencontres de leurs arm&eacute;es ; mat&eacute;riellement et moralement, elles vivaient enferm&eacute;es, dans leurs fronti&egrave;res, &eacute;trang&egrave;res et indiff&eacute;rentes l&rsquo;une &agrave; l&rsquo;autre ; les rapports commerciaux, qui seuls pouvaient les mettre en contact, &eacute;taient g&ecirc;n&eacute;s par la difficult&eacute; des communications et presque nuls. Au point de vue diplomatique, les populations n&rsquo;existaient pour ainsi dire pas ; elles &eacute;taient absorb&eacute;es tout enti&egrave;res dans la personne du souverain.</p>', '2018-07-29 16:44:46');
+(19, 'Merlin', 'TreiziÃ¨me chapitre - V2', '<p>Si l&rsquo;on &eacute;tudie l&rsquo;histoire des relations internationales, on est frapp&eacute; du contraste que pr&eacute;sente la diplomatie de notre temps compar&eacute;e avec la diplomatie des temps pass&eacute;s. Ce sont, il est vrai, les m&ecirc;mes formes, les m&ecirc;me traditions et presque les m&ecirc;mes personnages ; mais tout autres apparaissent les id&eacute;es et les actes. Alors que les nations appartenaient en quelque sorte &agrave; des maisons royales, la diplomatie n&rsquo;avait &agrave; servir que les pens&eacute;es, les int&eacute;r&ecirc;ts, les passions, les caprices m&ecirc;me des souverains dont elle &eacute;tait la confidente et l&rsquo;organe. Certes, quand nos ambassadeurs ex&eacute;cutaient les instructions de Henri IV, de Richelieu, de Mazarin, de Louis XIV, ils servaient la nation en m&ecirc;me temps que le prince. Le droit public qui r&eacute;git les pays civilis&eacute;s, les traditions de la politique fran&ccedil;aise datent de l&agrave;, et nous suivons aujourd&rsquo;hui encore les voies trac&eacute;es par ces grands esprits. A ces &eacute;poques cependant, la diplomatie &eacute;tait personnelle, ou tout au moins dynastique. La volont&eacute; du prince &eacute;tait sa premi&egrave;re loi ; ses n&eacute;gociations avaient pour objet la gloire et l&rsquo;int&eacute;r&ecirc;t de la couronne, et, sans m&eacute;conna&icirc;tre le patriotisme des souverains qui inspiraient son langage et ses actes, il serait facile de relever, dans les archives diplomatiques, maintes circonstances o&ugrave; l&rsquo;int&eacute;r&ecirc;t national &eacute;tait subordonn&eacute;, sacrifi&eacute; m&ecirc;me &agrave; des pens&eacute;es &eacute;go&iuml;stes, &agrave; des passions personnelles, &agrave; des consid&eacute;rations secon- daires ou mis&eacute;rables, dont il appartient &agrave; l&rsquo;histoire de faire justice. Enfin, &agrave; ces m&ecirc;mes &eacute;poques, les nations ne se connaissaient que par les relations &eacute;tablies entre les cours ou par les sanglantes rencontres de leurs arm&eacute;es ; mat&eacute;riellement et moralement, elles vivaient enferm&eacute;es, dans leurs fronti&egrave;res, &eacute;trang&egrave;res et indiff&eacute;rentes l&rsquo;une &agrave; l&rsquo;autre ; les rapports commerciaux, qui seuls pouvaient les mettre en contact, &eacute;taient g&ecirc;n&eacute;s par la difficult&eacute; des communications et presque nuls. Au point de vue diplomatique, les populations n&rsquo;existaient pour ainsi dire pas ; elles &eacute;taient absorb&eacute;es tout enti&egrave;res dans la personne du souverain.</p>', '2018-07-29 16:44:46');
 
 -- --------------------------------------------------------
 
@@ -103,17 +103,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `pseudo` (`pseudo`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `pseudo`, `hash_pass`, `email`, `admin`) VALUES
-(1, 'Jean Forteroche', '$2y$10$wTzBBT4vujEx4CCNxyiUu.YytEhEkNFipyq9JtkGTmd0Zwu/PPD9m', 'jean.f@email.com', 1),
+(1, 'Jean Forteroche', '$2y$10$0hBGFyXodAU29FrnDE0lleHU4DLEJmLUmbhBpshuz/g4iJ33lE8Xq', 'jean.f@email.com', 1),
 (2, 'Anatole', '$2y$10$/t3ZuhXOqJnKfUNTxGR16esfOD5ynqZeJEAGOFLd2KrLz6GaGvCUK', 'anatole@lsk.bzh', 0),
 (4, 'BÃ©rÃ©nice', '$2y$10$26addzPsp6XPo/0uC1cno.w9U.BjGfBgyPMlLKAX8s21Mt3i.RPse', 'bere@email.bt', 0),
-(5, 'ChildÃ©ric', '$2y$10$L/3c/STQINecndX/neqcJuyeARzYd3.sint.g/VdfnLvTT4ZvbIE.', 'chil@email.bt', 0);
+(5, 'ChildÃ©ric', '$2y$10$L/3c/STQINecndX/neqcJuyeARzYd3.sint.g/VdfnLvTT4ZvbIE.', 'chil@email.bt', 0),
+(6, 'DorothÃ©e', '$2y$10$PG9yChXDvuVDkq952DJNRutFP3qxT1k8XBKJ/xmiBTMoMRXqIvCXe', 'doro@email.bt', 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

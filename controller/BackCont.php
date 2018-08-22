@@ -14,6 +14,24 @@ class BackCont {
     
     }
 
+    public function addCom($id)
+    {
+
+        if (isset($_SESSION["user"])) {
+            $count = $this->postMngr->countPost($id);
+
+            if ($count == 1) {
+                $this->commMngr->addComm($_SESSION["user"]["pseudo"], $_POST["comment"], $id);
+                $this->affP($id);
+                header("Location: index.php?a=aff&p=$id");
+            } else {
+                header("Location: HOST.index.php");
+            }
+        } else {
+            header("Location: HOST.index.php?a=err&p=denied");
+        }
+    }
+
     public function addPost()
     {
 
@@ -38,11 +56,11 @@ class BackCont {
                     $myView->render($error);
                 } else {
                 $this->postMngr->addPost($_SESSION["user"]["pseudo"], $post->getTitle(), $post->getContent());
-                header("Location: ../public/index.php?a=acc");
+                header("Location: HOST.index.php");
                 }
             }
         } else {
-            header("Location: index.php?a=err&p=denied");
+            header("Location: HOST.index.php?a=err&p=denied");
         }
 
     }
@@ -87,7 +105,7 @@ class BackCont {
             } else {
                 $_SESSION["user"]["access"] = "user";
             }
-            header("Location: index.php?a=acc");
+            header("Location: index.php");
         } else {
             header("Location: index.php?a=bad");
         }
@@ -99,19 +117,6 @@ class BackCont {
         $_SESSION = array();
         unset($_SESSION);
         header("Location: index.php");
-
-    }
-
-    public function dispHome() {
-      
-        if (isset($_SESSION["user"])) {
-            $listPosts = $this->postMngr->listPosts();
-            $lastComms = $this->commMngr->lastComms();
-            $myView = new View("back/home");
-            $myView->render($listPosts, $lastComms);
-        } else {
-            header("Location: index.php?a=err&p=denied");
-        }
 
     }
 
@@ -151,20 +156,6 @@ class BackCont {
         } else {
             header("Location: index.php?a=err&p=404");
         }
-    }
-
-    public function addCom($id) {
-
-        $count = $this->postMngr->countPost($id);
-
-        if ($count == 1) {
-            $this->commMngr->addComm($_SESSION["user"]["pseudo"], $_POST["comment"], $id);
-            $this->affP($id);
-            header("Location: index.php?a=aff&p=$id");
-        } else {
-            header("Location: HOST.index.php");
-        }
-
     }
 
     public function report($id) {

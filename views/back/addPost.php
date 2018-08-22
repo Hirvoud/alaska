@@ -1,5 +1,5 @@
     <div class="row chap">
-        <p><a href="index.php?a=acc">Retour à la page d'accueil</a></p>
+        <p><a href="index.php">Retour à la page d'accueil</a></p>
         <h2>Ajouter un chapitre</h2>
         <p>
             <form class="col-lg-12" method="POST" action="index.php?a=add&e=submit">

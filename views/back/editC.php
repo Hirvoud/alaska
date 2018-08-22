@@ -1,4 +1,4 @@
-    <p><a href="index.php?a=acc">Retour à la page d'accueil</a></p>
+    <p><a href="index.php">Retour à la page d'accueil</a></p>
     <h2>Modifier un commentaire</h2>
     <p>
         <form method="POST" action="index.php?a=modC&p=<?= htmlspecialchars($param1->getId()); ?>&e=submit">

@@ -19,6 +19,7 @@ class View {
         } else {
             include(VIEW."navDef.php");
         }
+        
         ob_start();
         include(VIEW.$vue.".php");
         $content = ob_get_clean();

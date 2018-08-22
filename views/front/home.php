@@ -1,18 +1,18 @@
     <div class="row">
         <div class="col-lg-9">
             <h2>Derniers chapitres</h2>
-            <p>
-                
+            <p>    
                 <?php
                 foreach ($param1 as $chap) { ?>
-                    <div class="post col-lg-4" style="min-height:320px; text-align:justify;">
+                    <div class="posts col-lg-4" style="min-height:320px; text-align:justify;">
                         <h3>
-                            <a href="index.php?a=aff&p=<?= htmlspecialchars($chap->getId()); ?>"><?= htmlspecialchars($chap->getTitle()); ?></a>
+                            <a href="post/<?= htmlspecialchars($chap->getId()); ?>"><?= htmlspecialchars($chap->getTitle()); ?></a>
                         </h3>
                         <?= mb_strimwidth($chap->getContent(), 0, 410, "…"); ?>
                     </div>
                 <?php } ?>
             </p>
+            <p class="next"><a href="<?= HOST; ?>index.php?a=next">Page suivante</a></p>
         </div>
         
         <div class="col-lg-3">
@@ -29,6 +29,4 @@
                 <?php } ?>
             </div>
         </div>
-        <p><a href="index.php?a=acc">Debug admin</a></p>
     </div>
-

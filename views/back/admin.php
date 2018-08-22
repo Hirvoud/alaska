@@ -1,8 +1,10 @@
   <div class="row chap">
-    <p class="user">Bienvenue, <?= $_SESSION["user"]["pseudo"]; ?>.</p>
     <h2>Tableau de bord d'administration</h2>
-    <p><a href="index.php?a=acc">Retour à l'accueil</a></p>
-    <p>Derniers chapitres publiés</p>
+    
+    <p class="user">Bienvenue, <?= $_SESSION["user"]["pseudo"]; ?>.</p>
+    
+    <p><a href="index.php">Retour à l'accueil</a></p>
+    <p>Modifier un chapitre</p>
     <div class="row">
       <?php
       foreach ($param2 as $chap) { ?>

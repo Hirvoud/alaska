@@ -8,6 +8,7 @@ class User
     private $_hashPass;
     private $_email;
     private $_admin;
+    private $_error = [];
 
     public function __construct($data)
     {
@@ -61,6 +62,13 @@ class User
 
     }
 
+    public function getError()
+    {
+
+        return $this->_error;
+
+    }
+
     public function setId($id)
     {
 
@@ -75,11 +83,13 @@ class User
 
     public function setPseudo($pseudo)
     {
-
-        if (is_string($pseudo)) {
-            $this->_pseudo = $pseudo;
+        if (preg_match("/^([a-zA-Z0-9-_]{4,40})$/", $pseudo)) { ///^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-]{4,60}$/
+            if (is_string($pseudo)) {
+                $this->_pseudo = $pseudo;
+            }
+        } else {
+            $_error[] = "Votre pseudonyme contient des caractères non autorisés.";
         }
-
     }
 
     public function setHash_Pass($hashPass)
@@ -93,7 +103,7 @@ class User
 
     public function setEmail($email)
     {
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)) { //Regex : #^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$#
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) { 
             $this->_email = $email;
         } else {
             $_error = ["Email incorrect"];
@@ -109,6 +119,10 @@ class User
             $_error = ["Erreur d'attribution des droits"];
         }
 
+    }
+
+    public function setError($error) {
+        $this->_error = $error;
     }
 
 }

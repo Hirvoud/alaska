@@ -26,7 +26,13 @@ class FrontCont {
     }
 
     public function inscrip() {
+        
+        
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        
+        $user = new User($_POST);
+        var_dump($user); die;
+
         $this->UserMngr->inscrip($_POST["pseudo"], $_POST["email"], $password);
         $myView = new View("front/merci");
         $myView->render($_POST["pseudo"]);

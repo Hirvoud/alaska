@@ -1,6 +1,6 @@
     <div class="row chap">
         <p>
-            <a href="index.php?a=acc">Retour à l'accueil</a>
+            <a href="<?= HOST; ?>index.php">Retour à l'accueil</a>
         </p>
         <h3>
             <?= htmlspecialchars($param1->getTitle()) . " par " . htmlspecialchars($param1->getAuthor()) . " le <em>" . htmlspecialchars($param1->getDate()) . "</em>"; ?>

@@ -16,7 +16,7 @@ class UserMngr extends Mngr {
 
             $ins->execute();
         } else {
-            echo "email non valide";
+            echo "Email non valide.";
         }
     }
 

@@ -6,7 +6,6 @@ class Routeur {
     private $param;
     private $routes =   [
                             
-                            "acc"       =>  ["controller" => "BackCont", "method" => "dispHome"],       //afficher les posts
                             "add"       =>  ["controller" => "BackCont", "method" => "addPost"],        //ajouter un post
                             "aff"       =>  ["controller" => "BackCont", "method" => "affP"],           //afficher un post
                             "mod"       =>  ["controller" => "BackCont", "method" => "editP"],          //modifier un post
