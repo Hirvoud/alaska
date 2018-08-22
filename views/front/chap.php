@@ -1,11 +1,8 @@
-<div class="navbar"><a href="index.php?a=signup">S'inscrire ou se connecter</a></div>
-<div class="container">
-    <h1>Billet simple pour l'Alaska</h1>
     <p><a href="index.php">Retour à la page d'accueil</a></p>
     <h3><?= $param1->getTitle() . " par " . $param1->getAuthor() . " le <em>" . $param1->getDate() . "</em>"; ?></h3>
     <div class="post">
         <p>
-            <?= htmlspecialchars($param1->getContent()) ;?>
+            <?= $param1->getContent() ;?>
         </p>
     </div>
     <h2>Commentaires</h2>
@@ -20,4 +17,3 @@
             </p>
         <?php }
     ?>
-</div>

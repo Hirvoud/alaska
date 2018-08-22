@@ -19,7 +19,13 @@
     </head>
 
     <body>
-        <div id="page">
+        <div class="container">
+            <div class="row">
+                <header class="jumbotron">
+                    <h1>Billet simple pour l'Alaska</h1>
+                </header>
+            </div>
+
             <?php echo $content; ?>
         </div>
         

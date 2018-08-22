@@ -1,24 +1,20 @@
-<div class="navbar"><?= $_SESSION["user"]["pseudo"]; ?> : <a href="index.php?a=tdb">Tableau de bord</a> − <a href="index.php?a=deco">Déconnexion</a></div>
-<div class="container">
-    <header class="jumbotron">
-        <h1>Billet simple pour l'Alaska</h1>
-    </header>
+  <div class="row chap">
     <p class="user">Bienvenue, <?= $_SESSION["user"]["pseudo"]; ?>.</p>
     <h2>Tableau de bord d'administration</h2>
     <p><a href="index.php?a=acc">Retour à l'accueil</a></p>
     <p>Derniers chapitres publiés</p>
     <div class="row">
-    <?php
-    foreach ($param2 as $chap) { ?>
-      <div class="col-lg-4" style="min-height:300px; text-align:justify;">
-        <h3>
-          <a href="index.php?a=mod&p=<?= htmlspecialchars($chap->getId()); ?>"><?= htmlspecialchars($chap->getTitle()); ?></a>
-        </h3>
-        <p>
-          <?= mb_strimwidth($chap->getContent(), 0, 410); ?>…
-        </p>
-      </div>
-    <?php } ?>
+      <?php
+      foreach ($param2 as $chap) { ?>
+        <div class="col-lg-4" style="min-height:300px; text-align:justify;">
+          <h3>
+            <a href="index.php?a=mod&p=<?= htmlspecialchars($chap->getId()); ?>"><?= htmlspecialchars($chap->getTitle()); ?></a>
+          </h3>
+          <p>
+            <?= mb_strimwidth($chap->getContent(), 0, 410); ?>…
+          </p>
+        </div>
+      <?php } ?>
     </div>
     <p><a href="index.php?a=add">Ajouter une entrée</a></p>
     <p>Commentaires signalés</p>
@@ -45,7 +41,7 @@
     </table></p>
     <div class="profil">
       <p>Gestion du profil</p>
-      <p><a href="#">Modification du mot de passe</a></p>
+      <p><a href="index.php?a=pass">Modification du mot de passe</a></p>
       <p><a href="#">Gestion des utilisateurs</a></p>
     </div>
-</div>
+  </div>

@@ -20,12 +20,15 @@ class Routeur {
                             "delP"      =>  ["controller" => "BackCont", "method" => "delP"],           //suppression d'un post
                             "delC"      =>  ["controller" => "BackCont", "method" => "delC"],           //suppression d'un commentaire
                             "val"       =>  ["controller" => "BackCont", "method" => "val"],            //validation commentaire signalé
+                            "pass"      =>  ["controller" => "BackCont", "method" => "pass"],           //changement de mot de passe
+                            "success"   =>  ["controller" => "BackCont", "method" => "success"],        //opération effectuée avec succès
 
                             "home"      =>  ["controller" => "FrontCont", "method" => "dispHome"],      //afficher les posts
                             "signup"    =>  ["controller" => "FrontCont", "method" => "signUp"],        //formulaire inscription
                             "inscrip"   =>  ["controller" => "FrontCont", "method" => "inscrip"],       //validation inscription
                             "login"     =>  ["controller" => "FrontCont", "method" => "login"],         //formulaire connexion
-                            "err"       =>  ["controller" => "FrontCont", "method" => "err"]            //gestion des erreurs
+                            "err"       =>  ["controller" => "FrontCont", "method" => "err"],           //gestion des erreurs
+                            "bad"       =>  ["controller" => "FrontCont", "method" => "bad"]            //erreur identifiants de connexion
                             
                         ];
     

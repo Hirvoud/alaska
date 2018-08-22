@@ -63,4 +63,15 @@ class UserMngr extends Mngr {
 
     }
 
+    public function newPass($pseudo, $pass) {
+
+        $db = $this->dbConnect();
+
+        $q = $db->prepare("UPDATE users SET hash_pass = :pass WHERE pseudo = :pseudo");
+        $q->bindValue(":pass", $pass);
+        $q->bindValue(":pseudo", $pseudo);
+        $q->execute();
+
+    }
+
 }

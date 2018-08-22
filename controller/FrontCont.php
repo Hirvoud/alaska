@@ -12,6 +12,14 @@ class FrontCont {
         $this->UserMngr = new UserMngr();
     }
 
+    public function bad()
+    {
+
+        $myView = new View("front/bad");
+        $myView->render();
+
+    }
+        
     public function signUp() {
         $myView = new View("front/signup");
         $myView->render();

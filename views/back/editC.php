@@ -1,8 +1,3 @@
-<div class="navbar"><?= $_SESSION["user"]["pseudo"]; ?> : <a href="index.php?a=tdb">Tableau de bord</a> − <a href="index.php?a=deco">Déconnexion</a></div>
-<div class="container">
-    <header class="jumbotron">
-        <h1>Billet simple pour l'Alaska</h1>
-    </header>
     <p><a href="index.php?a=acc">Retour à la page d'accueil</a></p>
     <h2>Modifier un commentaire</h2>
     <p>
@@ -13,4 +8,3 @@
         </form>
     </p>
     <p><a href="index.php?a=delC&p=<?= $param1->getId(); ?>&e=<?= $param1->getAuthor(); ?>">Supprimer ce commentaire</a></p>
-</div>

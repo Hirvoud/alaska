@@ -9,7 +9,7 @@ class Post {
     private $_title;
     private $_error = [];
 
-    public function __construct($data) {
+    public function __construct(array $data) {
         $this->hydrate($data);
     }
 
@@ -39,6 +39,12 @@ class Post {
     public function getDate() {
 
         return $this->_date;
+
+    }
+
+    public function getError() {
+
+        return $this->_error;
 
     }
 
@@ -95,4 +101,11 @@ class Post {
 
     }
     
+    public function setError($error) {
+
+        if (is_string($error)) {
+            $this->_error = $error;
+        }
+    }
+
 }

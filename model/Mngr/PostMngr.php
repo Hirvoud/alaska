@@ -5,7 +5,7 @@ class PostMngr extends Mngr {
     public function addPost($author, $title, $content) {
         
         $db = $this->dbConnect();
-        //vérification $title et $content
+
         $ins = $db->prepare("INSERT INTO posts(author, title, content, deiz) VALUES(?, ?, ?, NOW())");
         $ins->execute(array($author, $title, $content));
 
@@ -17,6 +17,10 @@ class PostMngr extends Mngr {
         $req = $db->prepare("SELECT count(*) FROM posts WHERE id = :id");
         $req->bindValue(":id", $id);
         $req->execute();
+        
+        $count = $req->fetch(PDO::FETCH_ASSOC);
+
+        return reset($count);
 
     }
 
