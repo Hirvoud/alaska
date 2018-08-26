@@ -5,15 +5,19 @@ class PostMngr extends Mngr {
     public function addPost($author, $title, $content) {
         
         $db = $this->dbConnect();
-
-        $ins = $db->prepare("INSERT INTO posts(author, title, content, deiz) VALUES(?, ?, ?, NOW())");
-        $ins->execute(array($author, $title, $content));
+    
+        $ins = $db->prepare("INSERT INTO posts(author, title, content, deiz) VALUES(:author, :title, :content, NOW())");
+        $ins->bindValue(":author", $author);
+        $ins->bindValue(":title", $title);
+        $ins->bindValue(":content", $content);
+        $ins->execute();
 
     }
 
     public function countPost($id) {
 
         $db = $this->dbConnect();
+
         $req = $db->prepare("SELECT count(*) FROM posts WHERE id = :id");
         $req->bindValue(":id", $id);
         $req->execute();

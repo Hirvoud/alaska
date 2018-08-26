@@ -28,7 +28,7 @@ post h3 {
 
 .posts {
     margin: auto;
-    border: 2px solid black;
+    border: 0 solid black;
     border-radius: 10%;
 }
 
@@ -86,6 +86,10 @@ post h3 {
     position: relative;
     background-color: white;
     width: 75%;
+}
+
+.intro {
+    text-align: center;
 }
 
 .jumbotron {

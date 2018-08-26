@@ -36,7 +36,7 @@ class UserMngr extends Mngr {
             $pass = $q->fetch(PDO::FETCH_ASSOC);
             return $pass;
         } else {
-            header("Location: index.php?a=err&p=denied");
+            header("Location: " . HOST . "denied");
         }
 
     }

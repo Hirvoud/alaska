@@ -83,12 +83,12 @@ class User
 
     public function setPseudo($pseudo)
     {
-        if (preg_match("/^([a-zA-Z0-9-_]{4,40})$/", $pseudo)) { ///^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-]{4,60}$/
+        //if (preg_match("^([a-zA-Z0-9-_]{4,40})$", $pseudo)) { ///^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-]{4,60}$/
             if (is_string($pseudo)) {
                 $this->_pseudo = $pseudo;
-            }
-        } else {
-            $_error[] = "Votre pseudonyme contient des caractères non autorisés.";
+            //}
+        //} else {
+            //$this->_error = ["Votre pseudonyme contient des caractères non autorisés."];
         }
     }
 

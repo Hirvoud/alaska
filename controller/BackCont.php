@@ -23,12 +23,12 @@ class BackCont {
             if ($count == 1) {
                 $this->commMngr->addComm($_SESSION["user"]["pseudo"], $_POST["comment"], $id);
                 $this->affP($id);
-                header("Location: index.php?a=aff&p=$id");
+                header("Location: ".HOST."post/$id");
             } else {
-                header("Location: HOST.index.php");
+                header("Location: ".HOST."accueil");
             }
         } else {
-            header("Location: HOST.index.php?a=err&p=denied");
+            header("Location: ".HOST."denied");
         }
     }
 
@@ -41,11 +41,13 @@ class BackCont {
                 $myView = new View("back/addPost");
                 $myView->render();
             } else {
-                $post = new Post(array($author, $title, $content));
+                $post = new Post(array("Author" => $_SESSION["user"]["pseudo"], "Title" => $_POST["title"], "Content" => $_POST["content"]));
 
-                if (strlen($title) > 50) {
+                $test = array($_SESSION["user"]["pseudo"], $_POST["title"], $_POST["content"]);
+
+                if (strlen($post->getTitle()) > 50) {
                     $post->setError("Titre trop long");
-                } elseif (strlen($title) > 5000) {
+                } elseif (strlen($post->getTitle()) > 5000) {
                     $post->setError("Article trop long");
                 } //ajout autres conditions
 
@@ -55,12 +57,12 @@ class BackCont {
                     $myView = new View("back/error");
                     $myView->render($error);
                 } else {
-                $this->postMngr->addPost($_SESSION["user"]["pseudo"], $post->getTitle(), $post->getContent());
-                header("Location: HOST.index.php");
+                $this->postMngr->addPost($post->getAuthor(), $post->getTitle(), $post->getContent());
+                header("Location:".HOST."index.php");
                 }
             }
         } else {
-            header("Location: HOST.index.php?a=err&p=denied");
+            header("Location: ".HOST."denied");
         }
 
     }
@@ -81,7 +83,7 @@ class BackCont {
                 $myView->render($post, $comment);
             }
         } else {
-            header("Location: index.php?a=err&p=404");
+            header("Location: " . HOST . "404");
         }
 
     }
@@ -105,9 +107,9 @@ class BackCont {
             } else {
                 $_SESSION["user"]["access"] = "user";
             }
-            header("Location: index.php");
+            header("Location: " . HOST . "index.php");
         } else {
-            header("Location: index.php?a=bad");
+            header("Location: " . HOST . "index.php?a=bad");
         }
 
     }
@@ -116,7 +118,7 @@ class BackCont {
         
         $_SESSION = array();
         unset($_SESSION);
-        header("Location: index.php");
+        header("Location: " . HOST . "index.php");
 
     }
 
@@ -130,10 +132,10 @@ class BackCont {
                 $myView->render($comm);
             } else {
                 $this->commMngr->upComm($id);
-                header("Location: index.php?a=tdb");
+                header("Location: " . HOST . "index.php?a=tdb");
             }
         } else {
-            header("Location: index.php?a=err&p=denied");
+            header("Location: " . HOST . "denied");
         }
         
     }
@@ -148,13 +150,13 @@ class BackCont {
                     $myView->render($chap);
                 } else {
                     $this->postMngr->upPost($id);
-                    header("Location: ../public/index.php?a=aff&p=$id");
+                    header("Location: " . HOST . "post/$id");
                 }
             } else {
-                header("Location: index.php?a=err&p=denied");
+                header("Location: " . HOST . "denied");
             }
         } else {
-            header("Location: index.php?a=err&p=404");
+            header("Location: " . HOST . "404");
         }
     }
 
@@ -162,7 +164,7 @@ class BackCont {
         
         $postId = $_GET["e"];
         $rep = $this->commMngr->report($id);
-        header("Location: index.php?a=aff&p=$postId");
+        header("Location: " . HOST . "post/$postId");
 
     }
 
@@ -181,9 +183,9 @@ class BackCont {
             if (password_verify($oldPass, $pass["hash_pass"])) {
                 $this->userMngr->newPass($pseudo, $newPass);
                 
-                header("Location: index.php?a=success");
+                header("Location: " . HOST . "index.php?a=success");
             } else {
-                header("Location: index.php?a=bad");
+                header("Location: " . HOST . "index.php?a=bad");
             }
         }
 
@@ -204,7 +206,7 @@ class BackCont {
             $myView = new View("back/user");
             $myView->render($comms);
         } else {
-            header("Location: index.php?a=err&p=denied");
+            header("Location: " . HOST . "denied");
         }
     }
 
@@ -224,9 +226,9 @@ class BackCont {
                     $this->userMngr->delUser($_SESSION["user"]["pseudo"]);
                     
                     unset($_SESSION["user"]);
-                    header("Location: index.php");
+                    header("Location: " . HOST . "index.php");
                 } else {
-                    header("Location: index.php?a=err&p=denied");
+                    header("Location: " . HOST . "denied");
                 }
             }
         }
@@ -236,14 +238,14 @@ class BackCont {
     public function delC($id) {
         
         $this->commMngr->delComm($id);
-        header("Location: index.php?a=tdb");
+        header("Location: " . HOST . "index.php?a=tdb");
         
     }
 
     public function delP($id) {
 
         $this->postMngr->delPost($id);
-        header("Location: index.php?a=tdb");
+        header("Location: " . HOST . "index.php?a=tdb");
 
     }
 
@@ -257,7 +259,7 @@ class BackCont {
     public function val($id) {
         
         $rep = $this->commMngr->val($id);
-        header("Location: index.php?a=tdb");
+        header("Location: " . HOST . "index.php?a=tdb");
 
     }
 

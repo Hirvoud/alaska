@@ -59,7 +59,7 @@ class Routeur {
             $currentCont->$method($this->getParams());
            
         } else {
-            header("Location: index.php?a=err&p=404");
+            header("Location: ".HOST."404");
         }    
 
     }

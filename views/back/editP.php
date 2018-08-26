@@ -1,7 +1,8 @@
-    <p><a href="index.php">Retour à la page d'accueil</a></p>
+<div class="row chap">
+    <p><a href="<?= HOST; ?>accueil">Retour à la page d'accueil</a></p>
     <h2>Modifier un chapitre</h2>
     <p>
-        <form method="POST" action="index.php?a=mod&p=<?= htmlspecialchars($param1["id"]); ?>&e=submit">
+        <form method="POST" action="<?= HOST; ?>index.php?a=mod&p=<?= htmlspecialchars($param1["id"]); ?>&e=submit">
             Titre :<br />
             <input type="text" name="title" value="<?= htmlspecialchars($param1["title"]);?>"><br /><br />
             Contenu :<br />
@@ -9,4 +10,5 @@
             <input type="submit" value="Envoyer">
         </form>
     </p>
-    <p><span class="attention"><a href="index.php?a=delP&p=<?= $_GET["p"]; ?>">Supprimer cet article</a></span></p>
+    <p><span class="attention"><a href="<?= HOST; ?>index.php?a=delP&p=<?= $_GET["p"]; ?>">Supprimer cet article</a></span></p>
+</div>

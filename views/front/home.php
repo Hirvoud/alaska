@@ -1,3 +1,9 @@
+<div class="row chap">    
+    <div class="row">
+        <div class="intro">
+            <p>Bienvenue sur le site de mon nouveau livre : Billet simple pour l'Alaska.<br />Je publierai ici régulièrement des chapitres du livre et du contenu autour de l'Alaska et de de l'écriture.<br /></p><p><small class="signature">Jean Forteroche</small></p>
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-9">
             <h2>Derniers chapitres</h2>
@@ -12,7 +18,6 @@
                     </div>
                 <?php } ?>
             </p>
-            <p class="next"><a href="<?= HOST; ?>index.php?a=next">Page suivante</a></p>
         </div>
         
         <div class="col-lg-3">
@@ -24,9 +29,10 @@
                         <h4>
                             <?= htmlspecialchars($comm->getAuthor()); ?>
                         </h4>
-                        <a href="index.php?a=aff&p=<?= htmlspecialchars($comm->getPostId()); ?>"><?= mb_strimwidth($comm->getComment(), 0, 100); ?>…</a>
+                        <a href="<?= HOST; ?>post/<?= htmlspecialchars($comm->getPostId()); ?>"><?= mb_strimwidth($comm->getComment(), 0, 100); ?>…</a>
                     </div>
                 <?php } ?>
             </div>
         </div>
     </div>
+</div>

@@ -4,4 +4,22 @@ RewriteCond %{REQUEST_FILENAME} !-f
 
 RewriteRule ^post/([0-9]+)$ index.php?a=aff&p=$1
 
-#
+RewriteRule ^add/([0-9]+)$ index.php?a=add&p=$1
+
+RewriteRule ^tableau-de-bord$ index.php?a=tdb
+
+RewriteRule ^connexion$ index.php?a=signup
+
+RewriteRule ^accueil$ index.php
+
+RewriteRule ^addComm/([0-9]+)$ index.php?a=com&p=$1
+
+RewriteRule ^deconnexion$ index.php?a=deco
+
+RewriteRule ^add$ index.php?a=add
+
+RewriteRule ^mentions-legales$ index.php?a=leg
+
+RewriteRule ^404$ index.php?a=err&p=404
+
+RewriteRule ^denied$ index.php?a=err&p=denied
