@@ -122,94 +122,6 @@ class BackCont {
 
     }
 
-    public function editC($id) {
-
-        $comm = $this->commMngr->vComm($id);
-        
-        if ($comm->getAuthor() == $_SESSION["user"]["pseudo"]) {
-            if (!isset($_GET["e"])) {
-                $myView = new View("back/editC");
-                $myView->render($comm);
-            } else {
-                $this->commMngr->upComm($id);
-                header("Location: " . HOST . "index.php?a=tdb");
-            }
-        } else {
-            header("Location: " . HOST . "denied");
-        }
-        
-    }
-
-    public function editP($id) {
-
-        $chap = $this->postMngr->vPost($id);
-        if ($chap !== false) {
-            if ($_SESSION["user"]["access"] == "admin") {
-                if (!isset($_GET["e"])) {
-                    $myView = new View("back/editP");
-                    $myView->render($chap);
-                } else {
-                    $this->postMngr->upPost($id);
-                    header("Location: " . HOST . "post/$id");
-                }
-            } else {
-                header("Location: " . HOST . "denied");
-            }
-        } else {
-            header("Location: " . HOST . "404");
-        }
-    }
-
-    public function report($id) {
-        
-        $postId = $_GET["e"];
-        $rep = $this->commMngr->report($id);
-        header("Location: " . HOST . "post/$postId");
-
-    }
-
-    public function pass() {
-
-        if (!isset($_GET["e"])) {
-            $myView = new View("back/pass");
-            $myView->render();
-        } else {
-            $pseudo = $_SESSION["user"]["pseudo"];
-            $oldPass = $_POST["oldPass"];
-            $newPass = password_hash($_POST["newPass"], PASSWORD_DEFAULT);
-
-            $pass = $this->userMngr->check($pseudo, $oldPass);
-
-            if (password_verify($oldPass, $pass["hash_pass"])) {
-                $this->userMngr->newPass($pseudo, $newPass);
-                
-                header("Location: " . HOST . "index.php?a=success");
-            } else {
-                header("Location: " . HOST . "index.php?a=bad");
-            }
-        }
-
-    }
-
-    public function tdb() {
-
-        if ($_SESSION["user"]["access"] == "admin") {
-            $reports = $this->commMngr->vReport();
-            $list = $this->postMngr->listPosts();
-            
-            $myView = new View("back/admin");
-            $myView->render($reports, $list);
-
-        } elseif ($_SESSION["user"]["access"] == "user") {
-            $comms = $this->commMngr->getComms($_SESSION["user"]["pseudo"]);
-
-            $myView = new View("back/user");
-            $myView->render($comms);
-        } else {
-            header("Location: " . HOST . "denied");
-        }
-    }
-
     public function delA($pseudo) {
 
         if ($pseudo == $_SESSION["user"]["pseudo"]) {
@@ -249,11 +161,99 @@ class BackCont {
 
     }
 
+    public function editC($id) {
+
+        $comm = $this->commMngr->vComm($id);
+        
+        if ($comm->getAuthor() == $_SESSION["user"]["pseudo"]) {
+            if (!isset($_GET["e"])) {
+                $myView = new View("back/editC");
+                $myView->render($comm);
+            } else {
+                $this->commMngr->upComm($id);
+                header("Location: " . HOST . "index.php?a=tdb");
+            }
+        } else {
+            header("Location: " . HOST . "denied");
+        }
+        
+    }
+
+    public function editP($id) {
+
+        $chap = $this->postMngr->vPost($id);
+        if ($chap !== false) {
+            if ($_SESSION["user"]["access"] == "admin") {
+                if (!isset($_GET["e"])) {
+                    $myView = new View("back/editP");
+                    $myView->render($chap);
+                } else {
+                    $this->postMngr->upPost($id);
+                    header("Location: " . HOST . "post/$id");
+                }
+            } else {
+                header("Location: " . HOST . "denied");
+            }
+        } else {
+            header("Location: " . HOST . "404");
+        }
+    }
+
+    public function pass() {
+
+        if (!isset($_GET["e"])) {
+            $myView = new View("back/pass");
+            $myView->render();
+        } else {
+            $pseudo = $_SESSION["user"]["pseudo"];
+            $oldPass = $_POST["oldPass"];
+            $newPass = password_hash($_POST["newPass"], PASSWORD_DEFAULT);
+
+            $pass = $this->userMngr->check($pseudo, $oldPass);
+
+            if (password_verify($oldPass, $pass["hash_pass"])) {
+                $this->userMngr->newPass($pseudo, $newPass);
+                
+                header("Location: " . HOST . "index.php?a=success");
+            } else {
+                header("Location: " . HOST . "index.php?a=bad");
+            }
+        }
+
+    }
+
+    public function report($id) {
+        
+        $postId = $_GET["e"];
+        $rep = $this->commMngr->report($id);
+        header("Location: " . HOST . "post/$postId");
+
+    }
+
     public function success() {
 
         $myView = new View("back/success");
         $myView->render();
 
+    }
+
+    public function tdb() {
+
+        if ($_SESSION["user"]["access"] == "admin") {
+            $reports = $this->commMngr->vReport();
+            $list = $this->postMngr->listPosts();
+            
+            $myView = new View("back/admin");
+            $myView->render($reports, $list);
+
+        } elseif ($_SESSION["user"]["access"] == "user") {
+            $comms = $this->commMngr->getComms($_SESSION["user"]["pseudo"]);
+
+            $myView = new View("back/user");
+            $myView->render($comms);
+        } else {
+            header("Location: " . HOST . "denied");
+        }
     }
 
     public function val($id) {

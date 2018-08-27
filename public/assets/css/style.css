@@ -14,7 +14,7 @@ h1, h3 {
     text-align: center;
 }
 
-post h3 {
+.post h3 {
     background-color:rgb(250, 210, 123);
     color:black;
     font-size:1.2em;
@@ -22,8 +22,13 @@ post h3 {
     margin: auto;
 }
 
-.p post {
+p .post {
     text-align: justify;
+}
+
+a .posts {
+    color: #333;
+    text-decoration: none !important;
 }
 
 .posts {
@@ -33,7 +38,7 @@ post h3 {
 }
 
 .posts:hover {
-    background-color: blanchedalmond;
+    background-color: rgb(235, 186, 114);
 }
 
 .chap {
@@ -60,13 +65,8 @@ post h3 {
     font-size: 2em;
 }
 
-.chapitre {
-    display: flex;
-}
-
-.titre {
-    background-color: rgb(82, 36, 22);
-    color: white;
+.user {
+    text-align: right;
 }
 
 .navbar {
@@ -76,6 +76,7 @@ post h3 {
     max-height: 45px !important;
     background-color: black;
     color: white;
+    border-radius: 0;
 }
 
 .container {

@@ -19,25 +19,18 @@ class FrontCont {
         $myView->render();
 
     }
-        
-    public function signUp() {
-        $myView = new View("front/signup");
-        $myView->render();
-    }
+    
+    public function dispHome() {
 
-    public function inscrip() {
-        
-        
-        $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-        
-        $user = new User($_POST);
+        $listPosts = $this->postMngr->listPosts();
+        $lastComms = $this->commMngr->lastComms();
+        $myView = new View("front/home");
+        $myView->render($listPosts, $lastComms);
 
-        $this->UserMngr->inscrip($_POST["pseudo"], $_POST["email"], $password);
-        $myView = new View("front/merci");
-        $myView->render($_POST["pseudo"]);
     }
 
     public function err() {
+
         if ($_GET["p"] == "denied") {
             $myView = new View("front/denied");
             $myView->render();
@@ -45,14 +38,50 @@ class FrontCont {
             $myView = new View("front/404");
             $myView->render();
         }
+
     }
 
-    public function dispHome() {
+    public function inscrip() {
+        
+        $user = new User($_POST);
 
-        $listPosts = $this->postMngr->listPosts();
-        $lastComms = $this->commMngr->lastComms();
-        $myView = new View("front/home");
-        $myView->render($listPosts, $lastComms);
+        $testP = $this->UserMngr->testPseudo($_POST["pseudo"]);
+        $testE = $this->UserMngr->testEmail($_POST["email"]);
+
+        if (empty($user->getError()) ) {
+            if ($testP !== "1") {
+                if ($testE !== "1") {
+                    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+                    $this->UserMngr->inscrip($_POST["pseudo"], $_POST["email"], $password);
+                    $myView = new View("front/merci");
+                    $myView->render($_POST["pseudo"]);    
+                } else {
+                    $user->setError("Cette adresse email est déjà utilisée.");
+                    $myView = new View("back/error");
+                    $myView->render($user->getError());
+                } 
+            } else {
+                $user->setError("Ce pseudonyme est déjà utilisé.");
+                $myView = new View("back/error");
+                $myView->render($user->getError());
+            }
+        } else {
+            $myView = new View("back/error");
+            $myView->render($user->getError());
+        }
+    }
+
+    public function leg() {
+
+        $myView = new View("front/mentions");
+        $myView->render();
+
+    }
+
+    public function signUp() {
+
+        $myView = new View("front/signup");
+        $myView->render();
 
     }
 

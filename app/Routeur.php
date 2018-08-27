@@ -27,8 +27,8 @@ class Routeur {
                             "inscrip"   =>  ["controller" => "FrontCont", "method" => "inscrip"],       //validation inscription
                             "login"     =>  ["controller" => "FrontCont", "method" => "login"],         //formulaire connexion
                             "err"       =>  ["controller" => "FrontCont", "method" => "err"],           //gestion des erreurs
-                            "bad"       =>  ["controller" => "FrontCont", "method" => "bad"]            //erreur identifiants de connexion
-                            
+                            "bad"       =>  ["controller" => "FrontCont", "method" => "bad"],           //erreur identifiants de connexion
+                            "leg"       =>  ["controller" => "FrontCont", "method" => "leg"]            //affichage mentions légales
                         ];
     
     public function __construct($action) {

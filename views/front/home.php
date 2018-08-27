@@ -10,12 +10,14 @@
             <p>    
                 <?php
                 foreach ($param1 as $chap) { ?>
-                    <div class="posts col-lg-4" style="min-height:320px; text-align:justify;">
-                        <h3>
-                            <a href="post/<?= htmlspecialchars($chap->getId()); ?>"><?= htmlspecialchars($chap->getTitle()); ?></a>
-                        </h3>
-                        <?= mb_strimwidth($chap->getContent(), 0, 410, "…"); ?>
-                    </div>
+                    <a href="post/<?= htmlspecialchars($chap->getId()); ?>">
+                        <div class="posts col-lg-4" style="min-height:300px; text-align:justify;">
+                            <h3>
+                                <?= htmlspecialchars($chap->getTitle()); ?>
+                            </h3>
+                            <?= mb_strimwidth($chap->getContent(), 0, 410, "…"); ?>
+                        </div>
+                    </a>
                 <?php } ?>
             </p>
         </div>

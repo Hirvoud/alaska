@@ -41,6 +41,16 @@ class UserMngr extends Mngr {
 
     }
 
+    public function delUser($pseudo) {
+
+        $db = $this->dbConnect();
+
+        $q = $db->prepare("DELETE FROM users WHERE pseudo = :pseudo");
+        $q->bindValue(":pseudo", $pseudo);
+        $q->execute();
+
+    }
+
     public function getUser($pseudo) {
         
         $db = $this->dbConnect();
@@ -50,16 +60,6 @@ class UserMngr extends Mngr {
         $q->execute();
         $req = $q->fetch(PDO::FETCH_ASSOC);
         return $req;
-
-    }
-
-    public function delUser($pseudo) {
-
-        $db = $this->dbConnect();
-
-        $q = $db->prepare("DELETE FROM users WHERE pseudo = :pseudo");
-        $q->bindValue(":pseudo", $pseudo);
-        $q->execute();
 
     }
 
@@ -74,4 +74,29 @@ class UserMngr extends Mngr {
 
     }
 
+    public function testEmail($email) {
+
+        $db = $this->dbConnect();
+
+        $user = $db->prepare("SELECT count(*) FROM users WHERE email = :email");
+        $user->bindValue(":email", $email);
+        $user->execute();
+        $count = $user->fetchColumn();
+
+        return $count;
+
+    }
+
+    public function testPseudo($pseudo) {
+
+        $db = $this->dbConnect();
+
+        $user = $db->prepare("SELECT count(*) FROM users WHERE pseudo = :pseudo");
+        $user->bindValue(":pseudo", $pseudo);
+        $user->execute();
+        $count = $user->fetchColumn();
+
+        return $count;
+
+    }
 }
