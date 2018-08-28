@@ -1,0 +1,39 @@
+#Options +FollowSymLinks
+
+RewriteEngine On
+
+#RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^post/([0-9]+)$ index.php?a=aff&p=$1
+
+RewriteRule ^add/([0-9]+)$ index.php?a=add&p=$1
+
+RewriteRule ^tableau-de-bord$ index.php?a=tdb
+
+RewriteRule ^connexion$ index.php?a=signup
+
+RewriteRule ^accueil$ index.php
+
+RewriteRule ^addComm/([0-9]+)$ index.php?a=com&p=$1
+
+RewriteRule ^deconnexion$ index.php?a=deco
+
+RewriteRule ^add$ index.php?a=add
+
+RewriteRule ^mentions-legales$ index.php?a=leg
+
+RewriteRule ^404$ index.php?a=err&p=404
+
+RewriteRule ^denied$ index.php?a=err&p=denied
+
+RewriteRule ^modif/([0-9]+)$ index.php?a=mod&p=$1
+
+RewriteRule ^valider/([0-9]+)$ index.php?a=val&p=$1
+
+RewriteRule ^supprimer/([0-9]+)$ index.php?a=del&p=$1
+
+RewriteRule ^mot-de-passe$ index.php?a=pass
+
+RewriteRule ^suppression-compte/([a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ_-]+)$ index.php?a=delA&p=$1

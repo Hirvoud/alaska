@@ -1,0 +1,130 @@
+body {
+    min-height: 100vh;
+    font-family: Roboto, arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 25px;
+    position: relative;
+    background-image: url("../images/blue-background-2.jpg");
+    background-size: auto;
+}
+
+h1, h3 {
+    text-align: center;
+}
+
+.post h3 {
+    background-color:rgb(235, 186, 114);
+    color:black;
+    font-size:1.2em;
+    margin-bottom:0px;
+    margin: auto;
+}
+
+p .post {
+    text-align: justify;
+}
+
+a .posts {
+    color: #333;
+    text-decoration: none !important;
+}
+
+.posts {
+    margin: auto;
+    border: 0 solid black;
+    border-radius: 10%;
+}
+
+.posts:hover {
+    background-color: rgb(235, 186, 114);
+}
+
+.chap {
+    padding: 2%;
+    min-height: 100vh;
+}
+
+.intro {
+    font-size: 1.6em;
+    margin-bottom: 5%;
+}
+
+.lasts {
+    background-color: #eee;
+    border-radius: 10%;
+    padding-bottom: 1%;
+}
+
+.comms {
+    margin: auto;
+}
+
+.auteur {
+    font-size:1.1em;
+    font-weight: 500;
+}
+
+.signature {
+    color: rgb(235, 186, 114);
+}
+
+.vert {
+    color: green;
+    font-size: 2em;
+}
+
+.rouge {
+    color: red;
+    font-size: 2em;
+}
+
+.user {
+    text-align: right;
+}
+
+.navbar {
+    text-align: right;
+    padding: 10px 30px 0 10px;
+    min-height: 45px !important;
+    max-height: 45px !important;
+    background-color: black;
+    color: white;
+    border-radius: 0;
+}
+
+.container {
+    margin-top: -20px;
+    min-height: 100%;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    background-color: white;
+    width: 75%;
+}
+
+.intro {
+    text-align: center;
+}
+
+.jumbotron {
+    background-image: url("../images/white-background-2.png");
+    width: 100%;
+    color: #ca7505;
+}
+
+.container .jumbotron {
+    border-radius: 0 !important;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;  
+    width: 75%;
+    margin-left: 12.5%;
+    margin-right: auto;
+    text-align: center;
+    height: 25px;
+    background-color: white;
+}
