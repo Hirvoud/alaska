@@ -1,7 +1,7 @@
 <div class="row chap">    
     <div class="row">
         <div class="intro">
-            <p>Bienvenue sur le site de mon nouveau livre : Billet simple pour l'Alaska.<br />Je publierai ici régulièrement des chapitres du livre et du contenu autour de l'Alaska et de de l'écriture.<br /></p><p><small class="signature">Jean Forteroche</small></p>
+            <p>Bienvenue sur le site de mon nouveau livre : Billet simple pour l'Alaska.<br />Je publierai ici régulièrement des chapitres du livre et du contenu autour de l'Alaska et de l'écriture.<br /></p><p><small class="signature">Jean Forteroche</small></p>
         </div>
     </div>
     <div class="row">
@@ -22,7 +22,7 @@
             </p>
         </div>
         
-        <div class="col-lg-3">
+        <div class="col-lg-3 lasts">
             <h2>Derniers commentaires</h2>
             <div class="comms">
                 <?php

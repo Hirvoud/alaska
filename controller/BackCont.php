@@ -49,7 +49,7 @@ class BackCont {
                     $post->setError("Titre trop long");
                 } elseif (strlen($post->getTitle()) > 5000) {
                     $post->setError("Article trop long");
-                } //ajout autres conditions
+                }
 
                 $error = $post->getError();
 

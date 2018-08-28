@@ -15,7 +15,7 @@ h1, h3 {
 }
 
 .post h3 {
-    background-color:rgb(250, 210, 123);
+    background-color:rgb(235, 186, 114);
     color:black;
     font-size:1.2em;
     margin-bottom:0px;
@@ -46,6 +46,17 @@ a .posts {
     min-height: 100vh;
 }
 
+.intro {
+    font-size: 1.6em;
+    margin-bottom: 5%;
+}
+
+.lasts {
+    background-color: #eee;
+    border-radius: 10%;
+    padding-bottom: 1%;
+}
+
 .comms {
     margin: auto;
 }
@@ -53,6 +64,10 @@ a .posts {
 .auteur {
     font-size:1.1em;
     font-weight: 500;
+}
+
+.signature {
+    color: rgb(235, 186, 114);
 }
 
 .vert {
