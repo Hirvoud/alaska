@@ -15,4 +15,4 @@ else {
 }
 
 $routeur = new Routeur($route);
-$routeur->renderCont(); 
+$routeur->renderCont();

@@ -22,7 +22,7 @@ class BackCont {
 
             if ($count == 1) {
                 $this->commMngr->addComm($_SESSION["user"]["pseudo"], $_POST["comment"], $id);
-                $this->affP($id);
+                //$this->affP($id);
                 header("Location: ".HOST."post/$id");
             } else {
                 header("Location: ".HOST."accueil");
@@ -42,8 +42,6 @@ class BackCont {
                 $myView->render();
             } else {
                 $post = new Post(array("Author" => $_SESSION["user"]["pseudo"], "Title" => $_POST["title"], "Content" => $_POST["content"]));
-
-                $test = array($_SESSION["user"]["pseudo"], $_POST["title"], $_POST["content"]);
 
                 if (strlen($post->getTitle()) > 50) {
                     $post->setError("Titre trop long");

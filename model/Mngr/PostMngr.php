@@ -42,7 +42,7 @@ class PostMngr extends Mngr {
     {
 
         $db = $this->dbConnect();
-        $req = $db->query("SELECT id, author, title, content, DATE_FORMAT(deiz, '%d/%m/%Y à %Hh%i') AS deiz_f FROM posts ORDER BY deiz DESC LIMIT 0, 9");
+        $req = $db->query("SELECT id, author, title, content, DATE_FORMAT(deiz, '%d/%m/%Y à %Hh%i') AS deiz_f FROM posts ORDER BY deiz DESC");
         $res = $req->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($res as $key => $chap) {

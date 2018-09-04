@@ -9,13 +9,13 @@ class Routeur {
                             "add"       =>  ["controller" => "BackCont", "method" => "addPost"],        //ajouter un post
                             "aff"       =>  ["controller" => "BackCont", "method" => "affP"],           //afficher un post
                             "mod"       =>  ["controller" => "BackCont", "method" => "editP"],          //modifier un post
-                            "modC"      =>  ["controller" => "BackCont", "method" => "editC"],          //modifier un post
+                            "modC"      =>  ["controller" => "BackCont", "method" => "editC"],          //modifier un commentaire
                             "com"       =>  ["controller" => "BackCont", "method" => "addCom"],         //ajouter un commentaire
                             "check"     =>  ["controller" => "BackCont", "method" => "check"],          //vérification des infos de connexion
                             "deco"      =>  ["controller" => "BackCont", "method" => "deco"],           //déconnexion d'utilisateur
                             "report"    =>  ["controller" => "BackCont", "method" => "report"],         //envoi d'un signalement
                             "tdb"       =>  ["controller" => "BackCont", "method" => "tdb"],            //affichage du tableau de bord
-                            "delA"      =>  ["controller" => "BackCont", "method" => "delA"],           //suppression d'un post
+                            "delA"      =>  ["controller" => "BackCont", "method" => "delA"],           //suppression d'un compte
                             "delP"      =>  ["controller" => "BackCont", "method" => "delP"],           //suppression d'un post
                             "delC"      =>  ["controller" => "BackCont", "method" => "delC"],           //suppression d'un commentaire
                             "val"       =>  ["controller" => "BackCont", "method" => "val"],            //validation commentaire signalé

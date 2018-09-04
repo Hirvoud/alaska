@@ -1,4 +1,4 @@
-#Options +FollowSymLinks
+#Options +FollowSymLinks 
 
 RewriteEngine On
 
@@ -32,8 +32,10 @@ RewriteRule ^modif/([0-9]+)$ index.php?a=mod&p=$1
 
 RewriteRule ^valider/([0-9]+)$ index.php?a=val&p=$1
 
-RewriteRule ^supprimer/([0-9]+)$ index.php?a=del&p=$1
+RewriteRule ^supprimer/([0-9]+)$ index.php?a=delC&p=$1
 
 RewriteRule ^mot-de-passe$ index.php?a=pass
 
 RewriteRule ^suppression-compte/([a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ_-]+)$ index.php?a=delA&p=$1
+
+RewriteRule ^modifier-comm/([0-9]+)$ index.php?a=modC&p=$1

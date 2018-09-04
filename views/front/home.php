@@ -8,7 +8,7 @@
         <div class="col-lg-9">
             <h2>Derniers chapitres</h2>
             <p>    
-                <?php
+                <?php 
                 foreach ($param1 as $chap) { ?>
                     <a href="post/<?= htmlspecialchars($chap->getId()); ?>">
                         <div class="posts col-lg-4" style="min-height:300px; text-align:justify;">
